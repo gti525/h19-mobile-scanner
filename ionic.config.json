@@ -1,0 +1,7 @@
+{
+  "name": "h19-mobile-scanner",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
