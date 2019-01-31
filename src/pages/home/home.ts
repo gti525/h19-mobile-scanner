@@ -12,6 +12,7 @@ export class HomePage {
 
 
   }
+  
   onGoToEtatConnexion(){
     this.navCtrl.push(EtatConnexionPage);
   }

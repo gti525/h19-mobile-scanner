@@ -1,15 +1,38 @@
 
 <ion-content>
 
-    <ion-slides pager="true" >
+    <ion-slides pager="true" #slides >
         <ion-slide>
-          <h1>Slide 1</h1>
+            <div class="logoTitle">
+                <img src="/assets/imgs/barcode.png" alt="barcodeLogo">
+                <h1>Ticket Scanner</h1>
+            </div>
+            <h3>Avant de commencer, veuillez activer votre WiFi et vous connecter au réseau GTI525</h3>
+            <button ion-button (click)="next()">Activer WiFi</button>
         </ion-slide>
         <ion-slide>
-          <h1>Slide 2</h1>
+            <div class="logoTitle">
+                <img src="/assets/imgs/barcode.png" alt="barcodeLogo">
+                <h1>Ticket Scanner</h1>
+            </div>
+            <h3>Établissement de la connexion avec le réseau GTI525...</h3>
+            <ion-spinner name="bubbles"></ion-spinner>
         </ion-slide>
         <ion-slide>
-          <h1>Slide 3</h1>
+            <div class="logoTitle">
+                <img src="/assets/imgs/barcode.png" alt="barcodeLogo">
+                <h1>Ticket Scanner</h1>
+            </div>
+            <h3>Connexion établit!</h3>
+            <button ion-button (click)="next()">Continuer</button>
+        </ion-slide>
+        <ion-slide>
+            <div class="logoTitle">
+                <img src="/assets/imgs/barcode.png" alt="barcodeLogo">
+                <h1>Ticket Scanner</h1>
+            </div>
+            <h3>Réseau introuvable</h3>
+            <button ion-button>Réessayer</button><button ion-button>Continuer</button>
         </ion-slide>
       </ion-slides>
 
