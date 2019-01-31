@@ -9,13 +9,15 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { EtatConnexionPage } from '../pages/etat-connexion/etat-connexion';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    ParametresPage
+    ParametresPage,
+    EtatConnexionPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     ListPage,
-    ParametresPage
+    ParametresPage,
+    EtatConnexionPage
   ],
   providers: [
     StatusBar,
