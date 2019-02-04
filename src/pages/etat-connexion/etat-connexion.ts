@@ -17,6 +17,7 @@ import { Slides } from 'ionic-angular';
 })
 export class EtatConnexionPage {
   @ViewChild('slides') slides: Slides;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

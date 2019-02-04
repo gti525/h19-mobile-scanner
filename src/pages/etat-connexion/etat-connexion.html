@@ -1,38 +1,56 @@
 
 <ion-content>
 
-    <ion-slides pager="true" #slides >
-        <ion-slide>
+    <ion-slides pager="true" #slides>
+        <ion-slide class="start-connection">
             <div class="logoTitle">
                 <img src="/assets/imgs/barcode.png" alt="barcodeLogo">
-                <h1>Ticket Scanner</h1>
+                <h1>TICKET SCANNER</h1>
             </div>
-            <h3>Avant de commencer, veuillez activer votre WiFi et vous connecter au réseau GTI525</h3>
-            <button ion-button (click)="next()">Activer WiFi</button>
+            <div class="middle-elements">
+              <h3>Avant de commencer, veuillez activer votre WiFi et vous connecter au réseau GTI525</h3>
+            </div>
+            <div class="bottom-elements">
+              <button ion-button (click)="next()" color="bouton-wifi" id="activate-wifi">Activer WiFi</button>
+            </div>
         </ion-slide>
-        <ion-slide>
+        <ion-slide class="pending-connection">
             <div class="logoTitle">
                 <img src="/assets/imgs/barcode.png" alt="barcodeLogo">
-                <h1>Ticket Scanner</h1>
+                <h1>TICKET SCANNER</h1>
             </div>
-            <h3>Établissement de la connexion avec le réseau GTI525...</h3>
-            <ion-spinner name="bubbles"></ion-spinner>
+            <div class="middle-elements">
+              <h3>Établissement de la connexion avec le réseau GTI525...</h3>
+            </div>
+            <div class="bottom-elements">
+              <ion-spinner name="bubbles"></ion-spinner>
+            </div>
         </ion-slide>
-        <ion-slide>
+        <ion-slide class="pending-connection">
             <div class="logoTitle">
                 <img src="/assets/imgs/barcode.png" alt="barcodeLogo">
-                <h1>Ticket Scanner</h1>
+                <h1>TICKET SCANNER</h1>
             </div>
-            <h3>Connexion établit!</h3>
-            <button ion-button (click)="next()">Continuer</button>
+            <div class="middle-elements">
+              <h3>Connexion établit!</h3>
+            </div>
+            <div class="bottom-elements">
+              <button ion-button (click)="next()" color="bouton-mustard" id="bouton-continuer">Continuer</button>
+            </div>
         </ion-slide>
-        <ion-slide>
+        <ion-slide class="pending-connection">
             <div class="logoTitle">
                 <img src="/assets/imgs/barcode.png" alt="barcodeLogo">
-                <h1>Ticket Scanner</h1>
+                <h1>TICKET SCANNER</h1>
             </div>
-            <h3>Réseau introuvable</h3>
-            <button ion-button>Réessayer</button><button ion-button>Continuer</button>
+            <div class="middle-elements">
+              <h3>Réseau introuvable</h3>
+            </div>
+            <!-- <div style="padding-top: 120px;"> -->
+              <div class="bottom-elements">
+                <button ion-button color="bouton-mustard">Réessayer</button><button ion-button color="bouton-mustard">Continuer</button>
+              </div>
+            <!-- </div> -->
         </ion-slide>
       </ion-slides>
 
