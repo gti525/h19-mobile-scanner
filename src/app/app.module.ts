@@ -10,6 +10,7 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ConnexionPage } from '../pages/ConnexionPage/connexion';
+import { ConfirmationPage } from '../pages/ConfirmationPage/ConfirmationPage';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ConnexionPage } from '../pages/ConnexionPage/connexion';
     HomePage,
     ListPage,
     ParametresPage,
-    ConnexionPage
+    ConnexionPage,
+    ConfirmationPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { ConnexionPage } from '../pages/ConnexionPage/connexion';
     HomePage,
     ListPage,
     ParametresPage,
-    ConnexionPage
+    ConnexionPage,
+    ConfirmationPage
   ],
   providers: [
     StatusBar,

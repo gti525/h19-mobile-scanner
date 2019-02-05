@@ -13,7 +13,7 @@
                         <ion-input type="Password"></ion-input>
                     </ion-item>
                     <ion-item>
-                     <p>Mot de passe oublié?<a>Cliquez ici</a></p>
+                     <p>Mot de passe oublié?<a (click)="onGoToParametre()">Cliquez ici</a></p>
                     </ion-item>
                     <button ion-button color="primary" block outline>Connexion</button>
             </ion-list>
@@ -26,7 +26,7 @@
                     </button>
             -->
             <br><ion-icon name="qr-scanner"></ion-icon>
-            <a>Connectez-vous avec un code QR</a><br>
+            <a (click)="onGoToConfirmationPage()">Connectez-vous avec un code QR</a><br>
             <br><ion-icon name="jet"></ion-icon>
             <a>Connectez-vous avec reseauSocialA</a><br>        
 
