@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ParametresPage } from '../parametres/parametres';
 import { ConfirmationPage } from '../ConfirmationPage/ConfirmationPage';
+import { EtatConnexionPage } from '../etat-connexion/etat-connexion';
 
 @Component({
     selector: 'page-connexion',
@@ -20,5 +21,9 @@ export class ConnexionPage{
     onGoToConfirmationPage(){
         this.navCtrl.push(ConfirmationPage);
     }
+    
+    onGoToEtatConnexion(){
+        this.navCtrl.push(EtatConnexionPage);
+      }
 } 
 
