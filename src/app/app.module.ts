@@ -12,6 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { EtatConnexionPage } from '../pages/etat-connexion/etat-connexion';
 import { ConnexionPage } from '../pages/ConnexionPage/connexion';
 import { ConfirmationPage } from '../pages/ConfirmationPage/ConfirmationPage';
+import { nonValidePage } from '../pages/nonValidePage/nonValidePage';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ConfirmationPage } from '../pages/ConfirmationPage/ConfirmationPage';
     ParametresPage,
     EtatConnexionPage,
     ConnexionPage,
-    ConfirmationPage
+    ConfirmationPage,
+    nonValidePage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { ConfirmationPage } from '../pages/ConfirmationPage/ConfirmationPage';
     ParametresPage,
     EtatConnexionPage,
     ConnexionPage,
-    ConfirmationPage
+    ConfirmationPage,
+    nonValidePage
   ],
   providers: [
     StatusBar,

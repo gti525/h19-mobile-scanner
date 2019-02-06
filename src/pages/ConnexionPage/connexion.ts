@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ParametresPage } from '../parametres/parametres';
 import { ConfirmationPage } from '../ConfirmationPage/ConfirmationPage';
 import { EtatConnexionPage } from '../etat-connexion/etat-connexion';
+import { nonValidePage } from '../nonValidePage/nonValidePage';
 
 @Component({
     selector: 'page-connexion',
@@ -25,5 +26,9 @@ export class ConnexionPage{
     onGoToEtatConnexion(){
         this.navCtrl.push(EtatConnexionPage);
       }
+
+    onGoTononValidePage(){
+        this.navCtrl.push(nonValidePage);
+    }
 } 
 

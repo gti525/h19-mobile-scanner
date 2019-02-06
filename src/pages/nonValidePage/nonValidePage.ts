@@ -3,11 +3,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EtatConnexionPage } from '../etat-connexion/etat-connexion';
 
 @Component({
-    selector: 'page-ConfirmationPage',
-    templateUrl: 'ConfirmationPage.html'
+    selector: 'page-nonValidePage',
+    templateUrl: 'nonValidePage.html'
 })
 
-export class ConfirmationPage{
+export class nonValidePage{
 
     constructor(public navCtrl: NavController){
         
