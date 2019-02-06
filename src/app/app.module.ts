@@ -10,6 +10,8 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { EtatConnexionPage } from '../pages/etat-connexion/etat-connexion';
+import { ConnexionPage } from '../pages/ConnexionPage/connexion';
+import { ConfirmationPage } from '../pages/ConfirmationPage/ConfirmationPage';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { EtatConnexionPage } from '../pages/etat-connexion/etat-connexion';
     HomePage,
     ListPage,
     ParametresPage,
-    EtatConnexionPage
+    EtatConnexionPage,
+    ConnexionPage,
+    ConfirmationPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import { EtatConnexionPage } from '../pages/etat-connexion/etat-connexion';
     HomePage,
     ListPage,
     ParametresPage,
-    EtatConnexionPage
+    EtatConnexionPage,
+    ConnexionPage,
+    ConfirmationPage
   ],
   providers: [
     StatusBar,

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { ConnexionPage } from '../ConnexionPage/connexion';
+
 
 /**
  * Generated class for the ParametrePage page.
@@ -31,4 +33,7 @@ export class ParametresPage {
     this.navCtrl.push(HomePage);
   }
 
+  onGoToConnexion(){
+    this.navCtrl.push(ConnexionPage);
+  }
 }
