@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the EtatConnexionPage page.
@@ -31,6 +32,10 @@ export class EtatConnexionPage {
 
   prev() {
     this.slides.slidePrev();
+  }
+
+  onGoToHome(){
+    this.navCtrl.push(HomePage);
   }
 
 }
