@@ -15,6 +15,10 @@ import { BarcodeScanner } from "@ionic-native/barcode-scanner";
   templateUrl: "scanner.html"
 })
 export class ScannerPage {
+  ticketData: {};
+  ticketText: string;
+  ticketFormat: string;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -30,10 +34,17 @@ export class ScannerPage {
     this.barcodeScanner
       .scan()
       .then(barcodeData => {
-        console.log("Barcode data", barcodeData);
+        if (!barcodeData.cancelled) {
+          this.ticketData = barcodeData;
+          this.ticketText = barcodeData.text;
+          this.ticketFormat = barcodeData.format;
+        } else {
+          alert("You have cancelled scan");
+        }
       })
       .catch(err => {
         console.log("Error", err);
+        alert("Error in the scanning");
       });
   }
 }
