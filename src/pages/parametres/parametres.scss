@@ -1,11 +1,13 @@
+
+@import "ionic.globals";
+
 page-parametre {
+  p {
+      padding-left: 28px;
+  }
 
+  ion-content, ion-icon {
+      color: color($colors, primary);
+  }
 }
 
-p {
-    padding-left: 28px;
-}
-
-ion-icon {
-    color: #05556E;
-}
