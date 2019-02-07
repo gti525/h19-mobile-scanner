@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ParametresPage } from '../pages/parametres/parametres';
 import { ListPage } from '../pages/list/list';
+import { ScannerPage } from './../pages/scanner/scanner';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -13,6 +14,7 @@ import { EtatConnexionPage } from '../pages/etat-connexion/etat-connexion';
 import { ConnexionPage } from '../pages/ConnexionPage/connexion';
 import { ConfirmationPage } from '../pages/ConfirmationPage/ConfirmationPage';
 import { nonValidePage } from '../pages/nonValidePage/nonValidePage';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { nonValidePage } from '../pages/nonValidePage/nonValidePage';
     EtatConnexionPage,
     ConnexionPage,
     ConfirmationPage,
-    nonValidePage
+    nonValidePage,
+    ScannerPage
   ],
   imports: [
     BrowserModule,
@@ -38,11 +41,13 @@ import { nonValidePage } from '../pages/nonValidePage/nonValidePage';
     EtatConnexionPage,
     ConnexionPage,
     ConfirmationPage,
-    nonValidePage
+    nonValidePage,
+    ScannerPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
