@@ -2,8 +2,11 @@
 @import "ionic.globals";
 
 page-parametre {
+  ion-content{
+    margin-top:45 px;
+  }
   p {
-      padding-left: 28px;
+    padding-left: 28px;
   }
 
   ion-content, ion-icon {
