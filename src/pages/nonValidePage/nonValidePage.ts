@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { EtatConnexionPage } from '../etat-connexion/etat-connexion';
 
 @Component({
@@ -10,10 +10,10 @@ import { EtatConnexionPage } from '../etat-connexion/etat-connexion';
 export class nonValidePage{
 
     constructor(public navCtrl: NavController){
-        
+
     }
     onGoToEtatConnexion(){
         this.navCtrl.push(EtatConnexionPage);
       }
-} 
+}
 
