@@ -27,7 +27,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       { title: 'Scanner', component: ScannerPage },
-      { title: 'Paramètres', component: ParametresPage }
+      { title: 'Parametres', component: ParametresPage }
     ];
 
   }
