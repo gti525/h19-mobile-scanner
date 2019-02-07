@@ -5,7 +5,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ParametresPage } from '../pages/parametres/parametres';
-import { ListPage } from '../pages/list/list';
 import { ScannerPage } from './../pages/scanner/scanner';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -20,7 +19,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     ParametresPage,
     EtatConnexionPage,
     ConnexionPage,
@@ -36,7 +34,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     ParametresPage,
     EtatConnexionPage,
     ConnexionPage,

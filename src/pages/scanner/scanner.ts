@@ -18,6 +18,7 @@ export class ScannerPage {
   ticketData: {};
   ticketText: string;
   ticketFormat: string;
+  ticketStatus: string;
 
   constructor(
     public navCtrl: NavController,
@@ -35,16 +36,17 @@ export class ScannerPage {
       .scan()
       .then(barcodeData => {
         if (!barcodeData.cancelled) {
+          this.ticketStatus = "Succès!"
           this.ticketData = barcodeData;
           this.ticketText = barcodeData.text;
           this.ticketFormat = barcodeData.format;
-        } else {
-          alert("You have cancelled scan");
         }
       })
       .catch(err => {
         console.log("Error", err);
-        alert("Error in the scanning");
+        this.ticketStatus = "Echec "+ err;
+        this.ticketText = "Erreur";
+        this.ticketFormat = "Erreur";
       });
   }
 }

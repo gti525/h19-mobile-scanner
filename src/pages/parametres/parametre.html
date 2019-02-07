@@ -5,29 +5,33 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar color="scanneur">
-    <ion-title style="text-align: center">Paramètres</ion-title>
-  </ion-navbar>
+  <ion-header>
+    <ion-navbar color="scanneur">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Paramètres</ion-title>
+    </ion-navbar>
+  </ion-header>
 
 </ion-header>
 
 
 <ion-content padding>
- 
+
 
   <ion-list>
-    <button ion-item 
+    <button ion-item
             icon-start>
       <ion-icon name="contact"></ion-icon>
       Nom de l'usager
       <p>Courriel de l'usager</p>
     </button>
-    <button ion-item 
+    <button ion-item
             icon-start (click)="onGoToConnexion()">
       <ion-icon name="exit"></ion-icon>
       Se déconnecter
     </button>
-   
-  </ion-list> 
-</ion-content>   
+
+  </ion-list>
+</ion-content>
