@@ -4,16 +4,27 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { ParametresPage } from '../pages/parametres/parametres';
+import { ScannerPage } from './../pages/scanner/scanner';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { EtatConnexionPage } from '../pages/etat-connexion/etat-connexion';
+import { ConnexionPage } from '../pages/ConnexionPage/connexion';
+import { ConfirmationPage } from '../pages/ConfirmationPage/ConfirmationPage';
+import { nonValidePage } from '../pages/nonValidePage/nonValidePage';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ParametresPage,
+    EtatConnexionPage,
+    ConnexionPage,
+    ConfirmationPage,
+    nonValidePage,
+    ScannerPage
   ],
   imports: [
     BrowserModule,
@@ -23,11 +34,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ParametresPage,
+    EtatConnexionPage,
+    ConnexionPage,
+    ConfirmationPage,
+    nonValidePage,
+    ScannerPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
