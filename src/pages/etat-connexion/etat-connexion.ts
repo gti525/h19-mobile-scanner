@@ -4,6 +4,7 @@ import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { HomePage } from '../home/home';
 
+declare var WifiWizard2: any;
 /**
  * Generated class for the EtatConnexionPage page.
  *
@@ -37,5 +38,23 @@ export class EtatConnexionPage {
   onGoToHome(){
     this.navCtrl.push(HomePage);
   }
+
+  disableWifi(){
+
+    WifiWizard2.disableWifi();
+
+  }
+
+  activateWifi(){
+
+   WifiWizard2.connect("EBOX_NHH4", true, "15795ace5d55", "WPA", false);
+
+  // Imprime resultat
+  //   prom.then(function(result) {
+  //     alert(result);
+  // })
+
+  }
+
 
 }
