@@ -85,5 +85,4 @@
     <plugin name="phonegap-plugin-barcodescanner" spec="~8.0.1" />
     <engine name="android" spec="7.1.4" />
     <engine name="ios" spec="4.5.5" />
-    <plugin name="wifiwizard2" spec="^3.1.0" />
 </widget>
