@@ -1,7 +1,7 @@
 
 <ion-content>
 
-    <ion-slides pager="true" #slides>
+    <ion-slides pager="true" #slides (ionSlideDidChange)="slideChanged()">
         <ion-slide class="start-connection">
             <div class="logoTitle">
                 <img src="/assets/imgs/barcode.png" id="barcodeLogo">

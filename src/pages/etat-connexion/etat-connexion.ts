@@ -26,6 +26,10 @@ export class EtatConnexionPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EtatConnexionPage');
+
+    this.slides.lockSwipes(true);
+
+
   }
 
   next() {
@@ -44,6 +48,28 @@ export class EtatConnexionPage {
     this.navCtrl.push(HomePage);
   }
 
+  slideChanged() {
+    // let currentIndex = this.slides.getActiveIndex();
+    switch(this.slides.getActiveIndex()) { 
+      case 0: {
+        break; 
+      } 
+      case 1: { 
+        this.slides.lockSwipes(true);
+        break; 
+      }
+      case 2: { 
+        this.slides.lockSwipeToPrev(true);
+        break; 
+      }
+      default: { 
+        //statements; 
+        break; 
+      } 
+    } 
+    
+  }
+
   disableWifi() {
 
     WifiWizard2.disableWifi();
@@ -52,11 +78,13 @@ export class EtatConnexionPage {
 
   activateWifi() {
     var prom;
+    this.slides.lockSwipes(false);
     this.nextTo(1, 1500);
     if (this.platform.is('android')) {
-      prom = WifiWizard2.connect("EBOX_NHH4", true, "xxx", "WPA", false);
+      prom = WifiWizard2.connect("EBOX_NHH4", true, "15795ace5d55", "WPA", false);
       prom.then((result) => {
 
+        this.slides.lockSwipes(false);
         this.nextTo(2, 1500);
 
       }).catch((rej) => {
@@ -70,7 +98,8 @@ export class EtatConnexionPage {
       prom = WifiWizard2.iOSConnectNetwork("EBOX_NHH4", "xxx");
 
       prom.then((result) => {
-
+        
+        this.slides.lockSwipes(false);
         this.nextTo(2, 1500);
 
       }).catch((rej) => {
