@@ -48,26 +48,40 @@ export class EtatConnexionPage {
     this.navCtrl.push(HomePage);
   }
 
+  retryConnexion(){
+    this.slides.lockSwipes(false);
+    this.nextTo(0, 0);
+
+  }
+
+  //Listener, locks swipes
   slideChanged() {
-    // let currentIndex = this.slides.getActiveIndex();
-    switch(this.slides.getActiveIndex()) { 
+    switch (this.slides.getActiveIndex()) {
       case 0: {
-        break; 
-      } 
-      case 1: { 
+        break;
+      }
+      case 1: {
         this.slides.lockSwipes(true);
-        break; 
+        break;
       }
-      case 2: { 
+      case 2: {
         this.slides.lockSwipeToPrev(true);
-        break; 
+        break;
       }
-      default: { 
+      case 3: {
+        this.slides.lockSwipes(true);
+        break;
+      }
+      case 3: {
+        this.slides.lockSwipes(true);
+        break;
+      }
+      default: {
         //statements; 
-        break; 
-      } 
-    } 
-    
+        break;
+      }
+    }
+
   }
 
   disableWifi() {
@@ -79,9 +93,25 @@ export class EtatConnexionPage {
   activateWifi() {
     var prom;
     this.slides.lockSwipes(false);
-    this.nextTo(1, 1500);
+    this.nextTo(1, 1000);
     if (this.platform.is('android')) {
       prom = WifiWizard2.connect("EBOX_NHH4", true, "15795ace5d55", "WPA", false);
+      prom.then((result) => {
+
+        this.slides.lockSwipes(false);
+        this.nextTo(2, 1000);
+
+      }).catch((rej) => {
+        //here when you reject the promise
+        //Should move to a separate page
+        this.slides.lockSwipes(false);
+        this.nextTo(3, 0);
+      });
+
+    }
+    if (this.platform.is('ios')) {
+      prom = WifiWizard2.iOSConnectNetwork("EBOX_NHH4", "15795ace5d55");
+
       prom.then((result) => {
 
         this.slides.lockSwipes(false);
@@ -90,6 +120,28 @@ export class EtatConnexionPage {
       }).catch((rej) => {
         //here when you reject the promise
         //Should move to a separate page
+        this.slides.lockSwipes(false);
+        this.nextTo(3, 0);
+      });
+
+    }
+  }
+
+  activateWifi2() {
+    var prom;
+    this.slides.lockSwipes(false);
+    this.nextTo(1, 1000);
+    if (this.platform.is('android')) {
+      prom = WifiWizard2.connect("EBOX_NHH4", true, "xxx", "WPA", false);
+      prom.then((result) => {
+
+        this.slides.lockSwipes(false);
+        this.nextTo(2, 1000);
+
+      }).catch((rej) => {
+        //here when you reject the promise
+        //Should move to a separate page
+        this.slides.lockSwipes(false);
         this.nextTo(3, 0);
       });
 
@@ -98,13 +150,14 @@ export class EtatConnexionPage {
       prom = WifiWizard2.iOSConnectNetwork("EBOX_NHH4", "xxx");
 
       prom.then((result) => {
-        
+
         this.slides.lockSwipes(false);
         this.nextTo(2, 1500);
 
       }).catch((rej) => {
         //here when you reject the promise
         //Should move to a separate page
+        this.slides.lockSwipes(false);
         this.nextTo(3, 0);
       });
 
