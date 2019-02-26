@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { Platform } from 'ionic-angular';
 
 declare var WifiWizard2: any;
 /**
@@ -19,8 +20,8 @@ declare var WifiWizard2: any;
 })
 export class EtatConnexionPage {
   @ViewChild('slides') slides: Slides;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) {
   }
 
   ionViewDidLoad() {
@@ -30,8 +31,8 @@ export class EtatConnexionPage {
   next() {
     this.slides.slideNext();
   }
-  nextTo(index,time){
-    this.slides.slideTo(index, time);  
+  nextTo(index, time) {
+    this.slides.slideTo(index, time);
 
   }
 
@@ -39,31 +40,46 @@ export class EtatConnexionPage {
     this.slides.slidePrev();
   }
 
-  onGoToHome(){
+  onGoToHome() {
     this.navCtrl.push(HomePage);
   }
 
-  disableWifi(){
+  disableWifi() {
 
     WifiWizard2.disableWifi();
 
   }
 
-  activateWifi(){
+  activateWifi() {
 
-   //Forget wifi, si pas un bon password le wifi va etre enabled mais pas connecter au bon wifi. 
-   this.nextTo(1, 1500); 
-   var prom= WifiWizard2.connect("EBOX_NHH4", true, "15795ace5d55", "WPA", false);
-  //Need to do then to get Promise result
-  prom.then((result)  => {
-   
-      this.nextTo(2, 1500);  
-    
-  }).catch((rej) => {
-    //here when you reject the promise
-    this.nextTo(3,0);
-  });
+    this.nextTo(1, 1500);
+    if (this.platform.is('android')) {
+      var prom = WifiWizard2.connect("EBOX_NHH4", true, "xxx", "WPA", false);
+      prom.then((result) => {
 
+        this.nextTo(2, 1500);
+
+      }).catch((rej) => {
+        //here when you reject the promise
+        //Should move to a separate page
+        this.nextTo(3, 0);
+      });
+
+    }
+    if (this.platform.is('ios')) {
+      var prom = WifiWizard2.iOSConnectNetwork("EBOX_NHH4", "xxx");
+
+      prom.then((result) => {
+
+        this.nextTo(2, 1500);
+
+      }).catch((rej) => {
+        //here when you reject the promise
+        //Should move to a separate page
+        this.nextTo(3, 0);
+      });
+
+    }
   }
 
 
