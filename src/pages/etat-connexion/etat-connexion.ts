@@ -51,10 +51,10 @@ export class EtatConnexionPage {
   }
 
   activateWifi() {
-
+    var prom;
     this.nextTo(1, 1500);
     if (this.platform.is('android')) {
-      var prom = WifiWizard2.connect("EBOX_NHH4", true, "xxx", "WPA", false);
+      prom = WifiWizard2.connect("EBOX_NHH4", true, "xxx", "WPA", false);
       prom.then((result) => {
 
         this.nextTo(2, 1500);
@@ -67,7 +67,7 @@ export class EtatConnexionPage {
 
     }
     if (this.platform.is('ios')) {
-      var prom = WifiWizard2.iOSConnectNetwork("EBOX_NHH4", "xxx");
+      prom = WifiWizard2.iOSConnectNetwork("EBOX_NHH4", "xxx");
 
       prom.then((result) => {
 
