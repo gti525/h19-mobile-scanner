@@ -30,6 +30,10 @@ export class EtatConnexionPage {
   next() {
     this.slides.slideNext();
   }
+  nextTo(index,time){
+    this.slides.slideTo(index, time);  
+
+  }
 
   prev() {
     this.slides.slidePrev();
@@ -47,12 +51,18 @@ export class EtatConnexionPage {
 
   activateWifi(){
 
-   WifiWizard2.connect("EBOX_NHH4", true, "15795ace5d55", "WPA", false);
-
-  // Imprime resultat
-  //   prom.then(function(result) {
-  //     alert(result);
-  // })
+   //Forget wifi, si pas un bon password le wifi va etre enabled mais pas connecter au bon wifi. 
+   this.nextTo(1, 1500); 
+   var prom= WifiWizard2.connect("EBOX_NHH4", true, "15795ace5d55", "WPA", false);
+  //Need to do then to get Promise result
+  prom.then((result)  => {
+   
+      this.nextTo(2, 1500);  
+    
+  }).catch((rej) => {
+    //here when you reject the promise
+    this.nextTo(3,0);
+  });
 
   }
 
