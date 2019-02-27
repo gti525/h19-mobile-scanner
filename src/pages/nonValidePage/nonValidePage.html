@@ -2,26 +2,31 @@
         <ion-navbar>
           <ion-title>Appareils</ion-title>
         </ion-navbar>
-      </ion-header>
-        <ion-content>
-           <ion-card id="valide">
-              <img src="assets/imgs/red.png" alt="valide">
-           </ion-card>
+</ion-header>
+
+<ion-content>
+   <!--le div qui affiche la croix du ticket deja scanné-->  
+   <ion-content>
+    <ion-card id="valide">
+       <!--<img src="assets/imgs/green.png" alt="valide">-->
+       <div id="billetNonVal">
+         <p style="color:white">Ce ticket a déjà été scanné</p>  
+       </div>  
+       <ion-icon name="close" color="white"></ion-icon>
+    </ion-card>
     
-          
-            <ion-card id="info">
-                <h1>Information du billet</h1>
-                <p> Anis Ouddai</p>
-                <p>#435678754543</p>
-            </ion-card>
+    <!--Le div qui affiche les informations du billet scannée-->      
+    <ion-card id="info">
+      <h1>Information du billet</h1>
+      <p> Anis Ouddai</p>
+      <p>#435678754543</p>
+    </ion-card>
     
-            
-                <ion-card id="suivant">
-                       
-                    <img src="assets/imgs/red2.png" alt="suivant" (click)="onGoToEtatConnexion()">
-                </ion-card>
-    
-        </ion-content>
+    <!--Div qui contient le boutton pour scanner le prochain billet-->        
+    <ion-card id="suivant">
+      <button ion-button (click)="onGoToEtatConnexion()"  block outline style="color:white" >Scanner un nouveau billet</button>
+    </ion-card>
+</ion-content>
            
         
      
