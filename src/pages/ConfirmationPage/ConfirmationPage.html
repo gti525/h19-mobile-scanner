@@ -3,23 +3,31 @@
       <ion-title>Appareils</ion-title>
     </ion-navbar>
   </ion-header>
+
+    <!--le div qui affiche le crochet Valide-->  
     <ion-content>
        <ion-card id="valide">
-          <img src="assets/imgs/green.png" alt="valide">
+          <!--<img src="assets/imgs/green.png" alt="valide">-->
+          <div id="billetV">
+            <p style="color:white">Billet valide</p>  
+          </div>  
+          <ion-icon name="checkmark" color="white"></ion-icon>
        </ion-card>
 
-      
+       <!--Le div qui affiche les informations du billet scannee-->
         <ion-card id="info">
             <h1>Information du billet</h1>
             <p> Anis Ouddai</p>
             <p>#435678754543</p>
         </ion-card>
-
-        
-            <ion-card id="suivant">
-                   
-                <img src="assets/imgs/green2.png" alt="suivant" (click)="onGoToEtatConnexion()">
-            </ion-card>
+     
+        <!--Div qui contient le boutton pour scanner le prochain billet-->
+        <ion-card id="suivant">            
+          <!--<img src="assets/imgs/green2.png" alt="suivant" (click)="onGoToEtatConnexion()">-->
+          <div>
+            <button ion-button (click)="onGoToEtatConnexion()"  block outline style="color:white" >Scanner un nouveau billet</button>
+          </div>
+        </ion-card>
 
     </ion-content>
        
