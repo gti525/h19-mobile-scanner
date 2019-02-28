@@ -4,6 +4,7 @@ import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { Platform } from 'ionic-angular';
+import { ScannerPage } from '../scanner/scanner';
 
 declare var WifiWizard2: any;
 /**
@@ -46,6 +47,10 @@ export class EtatConnexionPage {
 
   onGoToHome() {
     this.navCtrl.push(HomePage);
+  }
+
+  onGoToScanner() {
+    this.navCtrl.push(ScannerPage);
   }
 
   retryConnexion(){
@@ -95,7 +100,7 @@ export class EtatConnexionPage {
     this.slides.lockSwipes(false);
     this.nextTo(1, 1000);
     if (this.platform.is('android')) {
-      prom = WifiWizard2.connect("EBOX_NHH4", true, "15795ace5d55", "WPA", false);
+      prom = WifiWizard2.connect("GTI525", true, "xyz", "WPA", false);
       prom.then((result) => {
 
         this.slides.lockSwipes(false);
@@ -110,7 +115,7 @@ export class EtatConnexionPage {
 
     }
     if (this.platform.is('ios')) {
-      prom = WifiWizard2.iOSConnectNetwork("EBOX_NHH4", "15795ace5d55");
+      prom = WifiWizard2.iOSConnectNetwork("GTI525", "xyz");
 
       prom.then((result) => {
 
@@ -126,43 +131,5 @@ export class EtatConnexionPage {
 
     }
   }
-
-  activateWifi2() {
-    var prom;
-    this.slides.lockSwipes(false);
-    this.nextTo(1, 1000);
-    if (this.platform.is('android')) {
-      prom = WifiWizard2.connect("EBOX_NHH4", true, "xxx", "WPA", false);
-      prom.then((result) => {
-
-        this.slides.lockSwipes(false);
-        this.nextTo(2, 1000);
-
-      }).catch((rej) => {
-        //here when you reject the promise
-        //Should move to a separate page
-        this.slides.lockSwipes(false);
-        this.nextTo(3, 0);
-      });
-
-    }
-    if (this.platform.is('ios')) {
-      prom = WifiWizard2.iOSConnectNetwork("EBOX_NHH4", "xxx");
-
-      prom.then((result) => {
-
-        this.slides.lockSwipes(false);
-        this.nextTo(2, 1500);
-
-      }).catch((rej) => {
-        //here when you reject the promise
-        //Should move to a separate page
-        this.slides.lockSwipes(false);
-        this.nextTo(3, 0);
-      });
-
-    }
-  }
-
 
 }
