@@ -1,35 +1,50 @@
 <ion-content class="bg">
-    <img src="assets/imgs/barcode.png" alt="logo">
-    <h1>Ticket Scanner</h1>
-    <ion-card>
-        <ion-card-content>
-            <ion-list no-lines>
-                <ion-item>
-                    <ion-label floating>Nom d'utilisateur</ion-label>
-                    <ion-input type="text"></ion-input>
-                </ion-item>
-                <ion-item>
-                        <ion-label floating>Mot de passe</ion-label>
-                        <ion-input type="Password"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                     <p>Mot de passe oublié?<a (click)="onGoToParametre()">Cliquez ici</a></p>
-                    </ion-item>
-                    <button ion-button (click)="onGoToEtatConnexion()" color="primary" block outline >Connexion</button>
-            </ion-list>
-            <br>
-            <b>OU</b>
-            <br>
-            <!----<button ion-button color="primary" ion-left block>
+  <div class="logoTitle">
+    <img src="/assets/imgs/barcode.png" id="barcodeLogo" />
+    <h1>TICKET SCANNER</h1>
+  </div>
+  <ion-card>
+    <ion-card-content>
+      <ion-list no-lines>
+        <ion-item>
+          <ion-label floating>Nom d'utilisateur</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Mot de passe</ion-label>
+          <ion-input type="Password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <p>
+            Mot de passe oublié? <a (click)="onGoToParametre()">Cliquez ici</a>
+          </p>
+        </ion-item>
+        <ion-item>
+          <button
+            ion-button
+            (click)="onGoToEtatConnexion()"
+            color="primary"
+            block
+            outline
+          >
+            Connexion
+          </button>
+        </ion-item>
+      </ion-list>
+      <br />
+      <b>OU</b>
+      <br />
+      <!----<button ion-button color="primary" ion-left block>
                     <ion-icon name="jet"> </ion-icon>
                     <div>Connexion avec reseauSocialA </div>
                     </button>
             -->
-            <br><ion-icon name="qr-scanner"></ion-icon>
-            <a (click)="onGoToConfirmationPage()">Connectez-vous avec un code QR</a><br>
-            <br><ion-icon name="jet"></ion-icon>
-            <a (click)="onGoTononValidePage()">Connectez-vous avec reseauSocialA</a><br>        
-
-        </ion-card-content>
-    </ion-card>
+      <br /><ion-icon name="qr-scanner"></ion-icon>
+      <a (click)="onGoToConfirmationPage()">Connectez-vous avec un code QR</a
+      ><br />
+      <br /><ion-icon name="jet"></ion-icon>
+      <a (click)="onGoTononValidePage()">Connectez-vous avec reseauSocialA</a
+      ><br />
+    </ion-card-content>
+  </ion-card>
 </ion-content>
