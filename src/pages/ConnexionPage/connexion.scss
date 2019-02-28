@@ -1,30 +1,54 @@
-page-connexion{
-    .bg{
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(10deg, #4e5efc,#4ee7fc);
-        
-    }
-    .scroll-content{
-        text-align: center;
-    }
-    ion-card.card{
-        background: rgba(232, 230,230, 0.6px);
-        border-radius: 0px;
+@import "ionic.globals";
 
-    }
-    .item{
-        background: rgba(232, 230,230, 0px); 
-    }
-    ion-input{
-        border-bottom: #4e5efc solid 1px;
-
-    }
+page-connexion {
+  .logoTitle{
+    margin-top: 30px;
     img{
-        margin-top: 30px;
-        width: 90px;
+      background:white;
+      padding:15px;
+      width:100px;
+      height:100px;
     }
-    button{
-        
+    h1 {
+      // font-family: "Roboto", "Helvetica Neue", sans-serif;
+      color: #F6F7EB;
+      font-weight: bold;
+      letter-spacing: 2px;
     }
+  }
+  .bg {
+    width: 100%;
+    height: 100%;
+    background: color($colors, primary);
+  }
+  .scroll-content {
+    text-align: center;
+  }
+  ion-card.card {
+    background: transparent;
+    border-radius: 0px transparent;
+    color:white;
+  }
+  .item {
+    background: rgba(232, 230, 230, 0px);
+  }
+  ion-input {
+    color:white;
+    background: color($colors, primary-darker);
+  }
+  .button-outline-md-primary{
+    border: white solid 2px;
+    border-radius: 5px;
+    padding:10px 0;
+    color:white !important;
+  }
+  a{
+    color:white;
+  }
+  .item-md p{
+    color:white;
+  }
+  ion-icon{
+    margin-right:10px;
+  }
 }
