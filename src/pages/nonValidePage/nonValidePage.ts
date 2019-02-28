@@ -1,7 +1,7 @@
 import { NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { EtatConnexionPage } from '../etat-connexion/etat-connexion';
+import { ScannerPage } from '../scanner/scanner';
 
 @Component({
     selector: 'page-nonValidePage',
@@ -15,7 +15,7 @@ export class nonValidePage{
       this.ticketID = navParams.get('ticketText');
     }
     onGoToEtatConnexion(){
-        this.navCtrl.push(EtatConnexionPage);
+        this.navCtrl.push(ScannerPage);
       }
 }
 
