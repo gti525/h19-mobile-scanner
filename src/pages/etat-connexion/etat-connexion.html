@@ -1,7 +1,7 @@
 
 <ion-content>
 
-    <ion-slides pager="true" #slides>
+    <ion-slides pager="false" #slides (ionSlideDidChange)="slideChanged()">
         <ion-slide class="start-connection">
             <div class="logoTitle">
                 <img src="/assets/imgs/barcode.png" id="barcodeLogo">
@@ -11,7 +11,7 @@
               <h3>Avant de commencer, veuillez activer votre WiFi et vous connecter au réseau GTI525</h3>
             </div>
             <div class="bottom-elements">
-              <button ion-button (click)="next()" color="bouton-wifi" id="activate-wifi">Activer WiFi</button>
+              <button ion-button (click)="activateWifi()" color="bouton-wifi" id="activate-wifi">Activer WiFi</button>  <button ion-button (click)="activateWifi2()">Wrong WiFi</button>
             </div>
         </ion-slide>
         <ion-slide class="pending-connection">
@@ -48,7 +48,7 @@
             </div>
             <!-- <div style="padding-top: 120px;"> -->
               <div class="bottom-elements">
-                <button ion-button color="bouton-mustard"  style="width:40%">Réessayer</button><button ion-button color="bouton-mustard" style="width:40%" (click)="onGoToHome()">Continuer</button>
+                <button ion-button color="bouton-mustard"  style="width:40%" (click)="retryConnexion()" >Réessayer</button><button ion-button color="bouton-mustard" style="width:40%" (click)="onGoToHome()">Continuer</button>
               </div>
             <!-- </div> -->
         </ion-slide>
@@ -62,7 +62,7 @@
             </div>
             <!-- <div style="padding-top: 120px;"> -->
               <div class="bottom-elements">
-                <button ion-button color="bouton-mustard"  style="width:40%">Réessayer</button><button ion-button color="bouton-mustard" style="width:40%" (click)="onGoToHome()">Continuer</button>
+                <button ion-button color="bouton-mustard"  style="width:40%" (click)="retryConnexion()">Réessayer</button><button ion-button color="bouton-mustard" style="width:40%" (click)="onGoToHome()">Continuer</button>
               </div>
             <!-- </div> -->
         </ion-slide>
