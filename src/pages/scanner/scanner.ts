@@ -50,10 +50,11 @@ export class ScannerPage {
       .scan(this.options)
       .then(barcodeData => {
         if (!barcodeData.cancelled) {
+          // TODO: the code should coe from the API
           let code = "ed36a534-3acd-11e9-b210-d663bd873d93"
           if(barcodeData.text == code ){
               this.navCtrl.push(ConfirmationPage, {
-                ticketID: barcodeData.text
+                ticketText: barcodeData.text
               });
           }
           else{

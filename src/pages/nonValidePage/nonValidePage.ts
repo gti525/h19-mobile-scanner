@@ -9,7 +9,7 @@ import { EtatConnexionPage } from '../etat-connexion/etat-connexion';
 })
 
 export class nonValidePage{
-    ticketID: string;
+    ticketID: any;
 
     constructor(public navCtrl: NavController, public navParams:NavParams){
       this.ticketID = navParams.get('ticketText');
