@@ -1,7 +1,8 @@
+import { ConfirmationPage } from './../ConfirmationPage/ConfirmationPage';
+import { nonValidePage } from './../nonValidePage/nonValidePage';
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
-import { BarcodeScanner } from "@ionic-native/barcode-scanner";
-
+import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-scanner";
 /**
  * Generated class for the ScannerPage page.
  *
@@ -19,6 +20,7 @@ export class ScannerPage {
   ticketText: string;
   ticketFormat: string;
   ticketStatus: string;
+  options: BarcodeScannerOptions;
 
   constructor(
     public navCtrl: NavController,
@@ -31,22 +33,38 @@ export class ScannerPage {
     this.scanTicket();
   }
 
+  goToInvalidTicket(){
+    this.navCtrl.push(nonValidePage);
+  }
+
+
+  goToValidTicket(){
+    this.navCtrl.push(ConfirmationPage);
+  }
+
   scanTicket() {
+    this.options = {
+      prompt: "Placez le code barre dans la zone rectangulaire"
+    };
     this.barcodeScanner
-      .scan()
+      .scan(this.options)
       .then(barcodeData => {
         if (!barcodeData.cancelled) {
-          this.ticketStatus = "Succès!"
-          this.ticketData = barcodeData;
-          this.ticketText = barcodeData.text;
-          this.ticketFormat = barcodeData.format;
+          let code = "ed36a534-3acd-11e9-b210-d663bd873d93"
+          if(barcodeData.text == code ){
+              this.navCtrl.push(ConfirmationPage, {
+                ticketID: barcodeData.text
+              });
+          }
+          else{
+            this.navCtrl.push(nonValidePage, {
+              ticketText: barcodeData.text
+            });
+          }
         }
       })
       .catch(err => {
-        console.log("Error", err);
         this.ticketStatus = "Echec "+ err;
-        this.ticketText = "Erreur";
-        this.ticketFormat = "Erreur";
       });
   }
 }
