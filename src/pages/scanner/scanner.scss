@@ -1,3 +1,40 @@
+  body{
+    height: 100%;
+  }
 page-scanner {
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  .box {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
+  #header {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  #info {
+    height: 50px;
+    color: black;
+    flex-grow: 1;
+  }
+
+  ion-icon {
+    font-size: 80px;
+  }
+
+  #btn-scan {
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 0;
+  }
 }

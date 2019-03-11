@@ -1,5 +1,3 @@
-import { ConfirmationPage } from './../ConfirmationPage/ConfirmationPage';
-import { nonValidePage } from './../nonValidePage/nonValidePage';
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-scanner";
@@ -17,10 +15,11 @@ import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-sca
 })
 export class ScannerPage {
   ticketData: {};
-  ticketText: string;
-  ticketFormat: string;
+  ticketId: string;
   ticketStatus: string;
+  isValidTicket: boolean;
   options: BarcodeScannerOptions;
+  ticketTitle: string;
 
   constructor(
     public navCtrl: NavController,
@@ -33,15 +32,6 @@ export class ScannerPage {
     this.scanTicket();
   }
 
-  goToInvalidTicket(){
-    this.navCtrl.push(nonValidePage);
-  }
-
-
-  goToValidTicket(){
-    this.navCtrl.push(ConfirmationPage);
-  }
-
   scanTicket() {
     this.options = {
       prompt: "Placez le code barre dans la zone rectangulaire"
@@ -52,15 +42,17 @@ export class ScannerPage {
         if (!barcodeData.cancelled) {
           // TODO: the code should coe from the API
           let code = "ed36a534-3acd-11e9-b210-d663bd873d93"
+          // If the ticket is valid
           if(barcodeData.text == code ){
-              this.navCtrl.push(ConfirmationPage, {
-                ticketText: barcodeData.text
-              });
+              this.ticketId = barcodeData.text
+              this.isValidTicket = true;
+              this.ticketTitle = "Billet valide"
           }
+          // If the ticket is not valid
           else{
-            this.navCtrl.push(nonValidePage, {
-              ticketText: barcodeData.text
-            });
+              this.ticketTitle = "Billet non valide"
+              this.ticketId = barcodeData.text
+              this.isValidTicket = false;
           }
         }
       })
