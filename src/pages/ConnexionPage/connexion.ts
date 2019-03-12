@@ -4,7 +4,7 @@ import { ParametresPage } from '../parametres/parametres';
 import { ConfirmationPage } from '../ConfirmationPage/ConfirmationPage';
 import { EtatConnexionPage } from '../etat-connexion/etat-connexion';
 import { nonValidePage } from '../nonValidePage/nonValidePage';
-import { ScannerPage } from './../scanner/scanner';
+import { ScannerPage } from '../scanner/scanner';
 @Component({
     selector: 'page-connexion',
     templateUrl: 'connexion.html'

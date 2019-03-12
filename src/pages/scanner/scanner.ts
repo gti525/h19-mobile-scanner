@@ -25,12 +25,9 @@ export class ScannerPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private barcodeScanner: BarcodeScanner
-  ) {}
+  ) { this.scanTicket();}
 
-  ionViewDidLoad() {
-    console.log("ionViewDidLoad ScannerPage");
-    this.scanTicket();
-  }
+
 
   scanTicket() {
     this.options = {

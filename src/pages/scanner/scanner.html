@@ -5,26 +5,23 @@
 </ion-header>
 
 <!--le div qui affiche le crochet Valide-->
-<ion-content>
+<div id="container">
   <div
-    id="header"
-    class="box"
+    class="box box-1"
     [style.background-color]="isValidTicket ? '#31C44D' : 'red'"
   >
-    <h1 style="color:white">{{ ticketTitle }}</h1>
+    <h2>{{ ticketTitle }}</h2>
     <ion-icon name="checkmark" color="white"></ion-icon>
   </div>
-
-  <!--Le div qui affiche les informations du billet scannee-->
-  <div id="ticket-information" class="box">
+  <div class="box box-2">
+    <h3><b>Identifiant du billet:</b></h3>
     <p>{{ ticketId }}</p>
   </div>
-
   <div
-    id="btn-scan"
-    class="box"
+    (click)="scanTicket()"
+    class="box box-3"
     [style.background-color]="isValidTicket ? '#31C44D' : 'red'"
   >
     Scanner un nouveau billet
   </div>
-</ion-content>
+</div>
