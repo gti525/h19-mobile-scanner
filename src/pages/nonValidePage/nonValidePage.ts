@@ -4,10 +4,10 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
 
 @Component({
-  selector: "page-ConfirmationPage",
-  templateUrl: "ConfirmationPage.html"
+  selector: "page-nonValidePage",
+  templateUrl: "nonValidePage.html"
 })
-export class ConfirmationPage {
+export class nonValidePage {
   ticketID: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.ticketID = navParams.get("ticketText");

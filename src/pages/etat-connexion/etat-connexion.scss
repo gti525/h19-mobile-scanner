@@ -1,0 +1,82 @@
+page-etat-connexion {
+
+    .start-connection {
+        background-color: #2DB8B7;
+    }
+
+    .pending-connection {
+        background-color: #E6AF2E;
+    }
+    .logoTitle {
+        position: absolute;
+        z-index: 1;
+        width:100%;
+        top: 8%;
+        height:66%;
+    }
+
+    h1 {
+        // font-family: "Roboto", "Helvetica Neue", sans-serif;
+        color: #F6F7EB;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+    .button {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    h3 {
+        color: #F6F7EB;
+        width:80%;
+        display:block;
+        margin: 0 auto;
+        font-size:1.5em;
+        // margin-top:70% !important;
+        // font-size:1em;
+    }
+    #activate-wifi{
+        // font-family: "Malgun Gothic Semilight", "Helvetica Neue", sans-serif;
+        color: #F6F7EB;
+        width:50%;
+        text-align:center;
+        // margin-top:20px !important;
+
+    }
+    #bouton-continuer{
+        color: #F6F7EB;
+        width:50%;
+        text-align:center;
+
+    }
+    #barcodeLogo {
+        background-color: #F6F7EB;
+        border:20px solid #F6F7EB;
+
+    }
+    .bottom-elements{
+        position: absolute;
+        z-index: 1;
+        width:100%;
+        top: 73%;
+        height:66%;
+    }
+    .middle-elements{
+        position: absolute;
+        z-index: 1;
+        width:100%;
+        top: 39%;
+        height:66%;
+        text-align:center;
+    }
+
+    .swiper-pagination {
+        padding: 50px;
+        bottom:0px;
+        .swiper-pagination-bullet {
+            background: #FFF;
+            margin: 0 3px;
+            height: 10px;
+            width: 10px;
+        }
+    }
+}
