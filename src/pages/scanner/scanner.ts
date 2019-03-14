@@ -1,3 +1,4 @@
+import { RaspiApiProvider } from './../../providers/raspi-api/raspi-api';
 import { ConfirmationPage } from './../ConfirmationPage/ConfirmationPage';
 import { nonValidePage } from './../nonValidePage/nonValidePage';
 import { Component } from "@angular/core";
@@ -25,11 +26,13 @@ export class ScannerPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private barcodeScanner: BarcodeScanner
+    private barcodeScanner: BarcodeScanner,
+    private serviceApi: RaspiApiProvider
   ) {}
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad ScannerPage");
+    console.log(this.serviceApi);
     this.scanTicket();
   }
 
