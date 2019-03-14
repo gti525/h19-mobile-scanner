@@ -38,7 +38,7 @@ export class ScannerPage {
   ionViewDidLoad() {
     console.log("ionViewDidLoad ScannerPage");
     // TODO: remove add ticket
-    this.addTicket();
+    // this.addTicket();
     this.scanTicket();
   }
 
@@ -62,8 +62,8 @@ export class ScannerPage {
       .scan(this.options)
       .then(barcodeData => {
         if (!barcodeData.cancelled) {
-          // TODO: check the status of addTicket API
-          // TODO: find the device ID
+          // TODO: Call addTicket API
+          // TODO: Pass code of QR and the device ID
           let code = "ed36a534-3acd-11e9-b210-d663bd873d93";
           if (barcodeData.text == code) {
             this.goToValidTicket(barcodeData);
