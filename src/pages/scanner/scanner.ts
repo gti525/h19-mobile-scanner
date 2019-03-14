@@ -20,7 +20,10 @@ import {
   templateUrl: "scanner.html"
 })
 export class ScannerPage {
-  ticketData: {};
+  ticketData = {
+    idMobile: "hey",
+    idBillet: "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  };
   ticketText: string;
   options: BarcodeScannerOptions;
   users: any;
@@ -34,16 +37,21 @@ export class ScannerPage {
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad ScannerPage");
-    this.getUsers();
-    // this.scanTicket();
+    // TODO: remove add ticket
+    this.addTicket();
+    this.scanTicket();
   }
 
-  goToInvalidTicket() {
-    this.navCtrl.push(nonValidePage);
+  goToValidTicket(barcodeData) {
+    this.navCtrl.push(ConfirmationPage, {
+      ticketText: barcodeData.text
+    });
   }
 
-  goToValidTicket() {
-    this.navCtrl.push(ConfirmationPage);
+  goToInValidTicket(barcodeData) {
+    this.navCtrl.push(nonValidePage, {
+      ticketText: barcodeData.text
+    });
   }
 
   scanTicket() {
@@ -54,16 +62,13 @@ export class ScannerPage {
       .scan(this.options)
       .then(barcodeData => {
         if (!barcodeData.cancelled) {
-          // TODO: the code should coe from the API
+          // TODO: check the status of addTicket API
+          // TODO: find the device ID
           let code = "ed36a534-3acd-11e9-b210-d663bd873d93";
           if (barcodeData.text == code) {
-            this.navCtrl.push(ConfirmationPage, {
-              ticketText: barcodeData.text
-            });
+            this.goToValidTicket(barcodeData);
           } else {
-            this.navCtrl.push(nonValidePage, {
-              ticketText: barcodeData.text
-            });
+            this.goToInValidTicket(barcodeData);
           }
         }
       })
@@ -71,11 +76,16 @@ export class ScannerPage {
         console.log("Echec " + err);
       });
   }
-  getUsers() {
-    this.serviceApi.getUsers()
-    .then(data => {
-      this.users = data;
-      console.log(this.users);
-    });
+
+  // Use the post from the raspi API
+  addTicket() {
+    this.serviceApi.addTicket(this.ticketData).then(
+      result => {
+        console.log(result);
+      },
+      err => {
+        console.log(err.status);
+      }
+    );
   }
 }
