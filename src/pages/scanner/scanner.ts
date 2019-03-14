@@ -19,8 +19,6 @@ import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-sca
 export class ScannerPage {
   ticketData: {};
   ticketText: string;
-  ticketFormat: string;
-  ticketStatus: string;
   options: BarcodeScannerOptions;
 
   constructor(
@@ -68,7 +66,7 @@ export class ScannerPage {
         }
       })
       .catch(err => {
-        this.ticketStatus = "Echec "+ err;
+        console.log("Echec "+ err);
       });
   }
 }
