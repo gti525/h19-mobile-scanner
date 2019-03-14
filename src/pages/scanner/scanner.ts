@@ -23,6 +23,7 @@ export class ScannerPage {
   ticketData: {};
   ticketText: string;
   options: BarcodeScannerOptions;
+  users: any;
 
   constructor(
     public navCtrl: NavController,
@@ -33,8 +34,8 @@ export class ScannerPage {
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad ScannerPage");
-    console.log(this.serviceApi);
-    this.scanTicket();
+    this.getUsers();
+    // this.scanTicket();
   }
 
   goToInvalidTicket() {
@@ -69,5 +70,12 @@ export class ScannerPage {
       .catch(err => {
         console.log("Echec " + err);
       });
+  }
+  getUsers() {
+    this.serviceApi.getUsers()
+    .then(data => {
+      this.users = data;
+      console.log(this.users);
+    });
   }
 }
