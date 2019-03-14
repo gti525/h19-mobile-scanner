@@ -4,6 +4,7 @@ import { ParametresPage } from '../parametres/parametres';
 import { ConfirmationPage } from '../ConfirmationPage/ConfirmationPage';
 import { EtatConnexionPage } from '../etat-connexion/etat-connexion';
 import { nonValidePage } from '../nonValidePage/nonValidePage';
+import { ScannerPage } from './../scanner/scanner';
 
 @Component({
     selector: 'page-connexion',
@@ -30,5 +31,10 @@ export class ConnexionPage{
     onGoTononValidePage(){
         this.navCtrl.push(nonValidePage);
     }
+
+    onGoToScannerPage(){
+      this.navCtrl.push(ScannerPage);
+    }
+
 }
 
