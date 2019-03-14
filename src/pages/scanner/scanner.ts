@@ -1,9 +1,12 @@
-import { RaspiApiProvider } from './../../providers/raspi-api/raspi-api';
-import { ConfirmationPage } from './../ConfirmationPage/ConfirmationPage';
-import { nonValidePage } from './../nonValidePage/nonValidePage';
+import { RaspiApiProvider } from "./../../providers/raspi-api/raspi-api";
+import { ConfirmationPage } from "./../ConfirmationPage/ConfirmationPage";
+import { nonValidePage } from "./../nonValidePage/nonValidePage";
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
-import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-scanner";
+import {
+  BarcodeScanner,
+  BarcodeScannerOptions
+} from "@ionic-native/barcode-scanner";
 /**
  * Generated class for the ScannerPage page.
  *
@@ -34,12 +37,11 @@ export class ScannerPage {
     this.scanTicket();
   }
 
-  goToInvalidTicket(){
+  goToInvalidTicket() {
     this.navCtrl.push(nonValidePage);
   }
 
-
-  goToValidTicket(){
+  goToValidTicket() {
     this.navCtrl.push(ConfirmationPage);
   }
 
@@ -52,13 +54,12 @@ export class ScannerPage {
       .then(barcodeData => {
         if (!barcodeData.cancelled) {
           // TODO: the code should coe from the API
-          let code = "ed36a534-3acd-11e9-b210-d663bd873d93"
-          if(barcodeData.text == code ){
-              this.navCtrl.push(ConfirmationPage, {
-                ticketText: barcodeData.text
-              });
-          }
-          else{
+          let code = "ed36a534-3acd-11e9-b210-d663bd873d93";
+          if (barcodeData.text == code) {
+            this.navCtrl.push(ConfirmationPage, {
+              ticketText: barcodeData.text
+            });
+          } else {
             this.navCtrl.push(nonValidePage, {
               ticketText: barcodeData.text
             });
@@ -66,7 +67,7 @@ export class ScannerPage {
         }
       })
       .catch(err => {
-        console.log("Echec "+ err);
+        console.log("Echec " + err);
       });
   }
 }
