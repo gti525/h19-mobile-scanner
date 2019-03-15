@@ -7,7 +7,7 @@ import {
   BarcodeScanner,
   BarcodeScannerOptions
 } from "@ionic-native/barcode-scanner";
-import { BrowserPlatformLocation } from "@angular/platform-browser/src/browser/location/browser_platform_location";
+import { EtatConnexionPage } from './../etat-connexion/etat-connexion';
 /**
  * Generated class for the ScannerPage page.
  *
@@ -27,7 +27,8 @@ export class ScannerPage {
   };
   ticketText: string;
   options: BarcodeScannerOptions;
-  sucessConnexion: boolean;
+  // TODO: get value from etat-connexion
+  sucessConnexion = true;
 
   constructor(
     public navCtrl: NavController,
@@ -38,9 +39,9 @@ export class ScannerPage {
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad ScannerPage");
-    // TODO: remove add ticket
-    // this.addTicket();
-    this.scanTicket();
+    if(this.sucessConnexion){
+      this.scanTicket();
+    }
   }
 
   goToValidTicket(barcodeData) {
@@ -55,6 +56,10 @@ export class ScannerPage {
     this.navCtrl.push(nonValidePage, {
       ticketText: barcodeData.text
     });
+  }
+
+  onGoToEtatConnexion(){
+    this.navCtrl.push(EtatConnexionPage);
   }
 
   playPositive(){
@@ -83,6 +88,7 @@ export class ScannerPage {
         if (!barcodeData.cancelled) {
           // TODO: Call addTicket API
           // TODO: Pass code of QR and the device ID
+          // TODO: Important! C07 has ticket been already scan?
           let code = "ed36a534-3acd-11e9-b210-d663bd873d93";
           if (barcodeData.text == code) {
             this.goToValidTicket(barcodeData);
