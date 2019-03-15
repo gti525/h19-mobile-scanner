@@ -34,13 +34,11 @@ export class ScannerPage {
   }
 
   goToInvalidTicket(){
-    this.playNegative();
     this.navCtrl.push(nonValidePage);
   }
 
 
   goToValidTicket(){
-    this.playPositive();
     this.navCtrl.push(ConfirmationPage);
   }
   
