@@ -43,20 +43,38 @@ export class ScannerPage {
   }
 
   goToValidTicket(barcodeData) {
+    this.playPositive();
     this.navCtrl.push(ConfirmationPage, {
       ticketText: barcodeData.text
     });
   }
 
   goToInValidTicket(barcodeData) {
+    this.playNegative();
     this.navCtrl.push(nonValidePage, {
       ticketText: barcodeData.text
     });
   }
+  
+  playPositive(){
+    let audio = new Audio();
+    audio.src = "/assets/sounds/positive.wav";
+    audio.load();
+    audio.play();
+  }
+
+  playNegative(){
+    let audio = new Audio();
+    audio.src = "/assets/sounds/negative.wav";
+    audio.load();
+    audio.play();
+  }
+
 
   scanTicket() {
     this.options = {
-      prompt: "Placez le code barre dans la zone rectangulaire"
+      prompt: "Placez le code barre dans la zone rectangulaire",
+      disableSuccessBeep: true
     };
     this.barcodeScanner
       .scan(this.options)
