@@ -7,6 +7,7 @@ import {
   BarcodeScanner,
   BarcodeScannerOptions
 } from "@ionic-native/barcode-scanner";
+import { BrowserPlatformLocation } from "@angular/platform-browser/src/browser/location/browser_platform_location";
 /**
  * Generated class for the ScannerPage page.
  *
@@ -22,11 +23,11 @@ import {
 export class ScannerPage {
   ticketData = {
     idMobile: "hey",
-    idBillet: "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    idBillet: "ed36a534-3acd-11e9-b210-d663bd873d93"
   };
   ticketText: string;
   options: BarcodeScannerOptions;
-  users: any;
+  sucessConnexion: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -55,7 +56,7 @@ export class ScannerPage {
       ticketText: barcodeData.text
     });
   }
-  
+
   playPositive(){
     let audio = new Audio();
     audio.src = "/assets/sounds/positive.wav";
