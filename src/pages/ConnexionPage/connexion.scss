@@ -17,8 +17,6 @@ page-connexion {
     }
   }
   .bg {
-    width: 100%;
-    height: 100%;
     background: color($colors, primary);
   }
   .scroll-content {
@@ -50,5 +48,15 @@ page-connexion {
   }
   ion-icon{
     margin-right:10px;
+    color:white;
+  }
+  .list-md{
+    margin-bottom:0;
+  }
+  #connexion-footer{
+    color:white;
+    #connexion-qr{
+      margin: 10px 0;
+    }
   }
 }

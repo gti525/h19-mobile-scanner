@@ -35,3 +35,7 @@ ion-content {
 .bar-button-default-md:hover:not(.disable-hover) {
   color: color($colors, light);
 }
+
+.item-md .item-button {
+  height: 35px;
+}

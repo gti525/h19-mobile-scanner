@@ -5,6 +5,8 @@ import { Slides } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { Platform } from 'ionic-angular';
 import { ScannerPage } from '../scanner/scanner';
+import { AlertController } from 'ionic-angular';
+
 
 declare var WifiWizard2: any;
 /**
@@ -22,7 +24,37 @@ declare var WifiWizard2: any;
 export class EtatConnexionPage {
   @ViewChild('slides') slides: Slides;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, private alertController:AlertController) {
+  }
+  
+  openPasswordAlert() {
+    let alert = this.alertController.create({
+      title: 'Mot de passe',
+      message: "Veuillez entrer le mot de passe du WiFi GTI525.",
+      inputs: [
+       {
+          name: 'password',
+          placeholder: 'Password',
+          type: 'password'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Connexion',
+          handler: data => {
+            this.activateWifi(data.password);
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   ionViewDidLoad() {
@@ -95,12 +127,13 @@ export class EtatConnexionPage {
 
   }
 
-  activateWifi() {
+  activateWifi(wifiPassword) {
     var prom;
     this.slides.lockSwipes(false);
     this.nextTo(1, 1000);
     if (this.platform.is('android')) {
-      prom = WifiWizard2.connect("GTI525", true, "xyz", "WPA", false);
+      prom = WifiWizard2.connect("GTI525", true, wifiPassword, "WPA", false);
+      // alert(`Your password input: ${wifiPassword}`)
       prom.then((result) => {
 
         this.slides.lockSwipes(false);
@@ -115,7 +148,7 @@ export class EtatConnexionPage {
 
     }
     if (this.platform.is('ios')) {
-      prom = WifiWizard2.iOSConnectNetwork("GTI525", "xyz");
+      prom = WifiWizard2.iOSConnectNetwork("GTI525", wifiPassword);
 
       prom.then((result) => {
 

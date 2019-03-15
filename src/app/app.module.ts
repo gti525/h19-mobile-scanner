@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -14,6 +15,7 @@ import { ConnexionPage } from '../pages/ConnexionPage/connexion';
 import { ConfirmationPage } from '../pages/ConfirmationPage/ConfirmationPage';
 import { nonValidePage } from '../pages/nonValidePage/nonValidePage';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { RaspiApiProvider } from '../providers/raspi-api/raspi-api';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -45,7 +48,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     StatusBar,
     SplashScreen,
     BarcodeScanner,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RaspiApiProvider
   ]
 })
 export class AppModule {}
