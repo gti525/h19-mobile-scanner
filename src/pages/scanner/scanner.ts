@@ -43,14 +43,14 @@ export class ScannerPage {
   }
 
   goToValidTicket(barcodeData) {
-    playPositive();
+    this.playPositive();
     this.navCtrl.push(ConfirmationPage, {
       ticketText: barcodeData.text
     });
   }
 
   goToInValidTicket(barcodeData) {
-    playNegative();
+    this.playNegative();
     this.navCtrl.push(nonValidePage, {
       ticketText: barcodeData.text
     });
