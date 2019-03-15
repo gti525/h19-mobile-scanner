@@ -27,7 +27,6 @@ export class ScannerPage {
   };
   ticketText: string;
   options: BarcodeScannerOptions;
-  // TODO: get value from etat-connexion
   sucessConnexion = true;
 
   constructor(
@@ -38,7 +37,7 @@ export class ScannerPage {
   ) {}
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad ScannerPage");
+    // TODO: get value of sucess connexion from etat-connexion
     if(this.sucessConnexion){
       this.scanTicket();
     }
@@ -75,7 +74,6 @@ export class ScannerPage {
     audio.load();
     audio.play();
   }
-
 
   scanTicket() {
     this.options = {
