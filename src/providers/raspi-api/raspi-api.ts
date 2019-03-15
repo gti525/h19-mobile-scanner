@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class RaspiApiProvider {
-  apiUrl = "virtserver.swaggerhub.com/raspi7/raspi/1.0.0";
+  apiUrl = "http://virtserver.swaggerhub.com/raspi7/raspi/1.0.0";
   constructor(public http: HttpClient) {
     console.log("RaspiApiProvider Provider");
   }
