@@ -42,16 +42,16 @@ export class ScannerPage {
     this.navCtrl.push(ConfirmationPage);
   }
   
-  playAudio(sound){
+  playPositive(){
     let audio = new Audio();
-    if (sound = "positive"){
-      alert(sound)
-      audio.src = "/assets/sounds/positive.wav";
-    }
-    else{
-      alert(sound)
-      audio.src = "/assets/sounds/negative.wav";
-    }
+    audio.src = "/assets/sounds/positive.wav";
+    audio.load();
+    audio.play();
+  }
+
+  playNegative(){
+    let audio = new Audio();
+    audio.src = "/assets/sounds/negative.wav";
     audio.load();
     audio.play();
   }
@@ -60,7 +60,7 @@ export class ScannerPage {
   scanTicket() {
     this.options = {
       prompt: "Placez le code barre dans la zone rectangulaire",
-      disableSuccessBeep: false
+      disableSuccessBeep: true
     };
     this.barcodeScanner
       .scan(this.options)
@@ -69,13 +69,13 @@ export class ScannerPage {
           // TODO: the code should coe from the API
           let code = "ed36a534-3acd-11e9-b210-d663bd873d93"
           if(barcodeData.text == code ){
-              this.playAudio("positive");
+              this.playPositive();
               this.navCtrl.push(ConfirmationPage, {
                 ticketText: barcodeData.text
               });
           }
           else{
-            this.playAudio("negative");
+            this.playNegative();
             this.navCtrl.push(nonValidePage, {
               ticketText: barcodeData.text
             });
