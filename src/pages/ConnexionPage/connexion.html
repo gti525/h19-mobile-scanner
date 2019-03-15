@@ -3,8 +3,6 @@
     <img src="/assets/imgs/barcode.png" id="barcodeLogo" />
     <h1>TICKET SCANNER</h1>
   </div>
-  <ion-card>
-    <ion-card-content>
       <ion-list no-lines>
         <ion-item>
           <ion-label floating>Nom d'utilisateur</ion-label>
@@ -31,14 +29,15 @@
           </button>
         </ion-item>
       </ion-list>
-      <br />
-      <b>OU</b>
-      <br />
-      <br /><ion-icon name="qr-scanner"></ion-icon>
-      <a (click)="onGoToScannerPage()">Connectez-vous avec un code QR</a><br />
-      <br /><ion-icon name="jet"></ion-icon>
-      <a (click)="onGoTononValidePage()">Connectez-vous avec My Eventory</a
-      ><br />
-    </ion-card-content>
-  </ion-card>
+      <div id="connexion-footer">
+          <div id="connexion-or"><b>OU</b></div>
+          <div id="connexion-qr">
+            <ion-icon name="qr-scanner"></ion-icon>
+            <a (click)="onGoToScannerPage()">Connectez-vous avec un code QR</a>
+          </div>
+          <div id="connexion-eventory">
+            <ion-icon name="jet"></ion-icon>
+            <a (click)="onGoTononValidePage()">Connectez-vous avec My Eventory</a>
+          </div>
+      </div>
 </ion-content>
