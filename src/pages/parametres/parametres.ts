@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { ConnexionPage } from '../ConnexionPage/connexion';
+import { SoundboardPage } from '../soundboard/soundboard';
 
 
 /**
@@ -36,4 +37,9 @@ export class ParametresPage {
   onGoToConnexion(){
     this.navCtrl.push(ConnexionPage);
   }
+
+  onGoToSound(){
+    this.navCtrl.push(SoundboardPage);
+  }
+  
 }

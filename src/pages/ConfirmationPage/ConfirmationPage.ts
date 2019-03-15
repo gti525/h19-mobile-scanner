@@ -15,4 +15,5 @@ export class ConfirmationPage {
   onGoToScanner() {
     this.navCtrl.push(ScannerPage);
   }
+
 }

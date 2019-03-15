@@ -14,6 +14,8 @@ import { ConnexionPage } from '../pages/ConnexionPage/connexion';
 import { ConfirmationPage } from '../pages/ConfirmationPage/ConfirmationPage';
 import { nonValidePage } from '../pages/nonValidePage/nonValidePage';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Media} from '@ionic-native/media/ngx';
+import { SoundboardPage } from '../pages/soundboard/soundboard';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     ConnexionPage,
     ConfirmationPage,
     nonValidePage,
-    ScannerPage
+    ScannerPage,
+    SoundboardPage
   ],
   imports: [
     BrowserModule,
@@ -39,12 +42,14 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     ConnexionPage,
     ConfirmationPage,
     nonValidePage,
-    ScannerPage
+    ScannerPage,
+    SoundboardPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     BarcodeScanner,
+    Media,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

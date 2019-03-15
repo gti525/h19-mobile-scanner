@@ -8,6 +8,10 @@ import { ParametresPage } from '../pages/parametres/parametres';
 import { ConnexionPage } from '../pages/ConnexionPage/connexion';
 import { ScannerPage } from './../pages/scanner/scanner';
 
+
+
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -44,4 +48,5 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
 }
