@@ -57,7 +57,7 @@ export class ScannerPage {
     this.playNegative();
     this.navCtrl.push(nonValidePage, {
       ticketText: barcodeData.text,
-      text: barcodeData.text
+      text: txt
     });
   }
 
