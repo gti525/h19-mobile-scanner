@@ -21,10 +21,6 @@ import { EtatConnexionPage } from './../etat-connexion/etat-connexion';
   templateUrl: "scanner.html"
 })
 export class ScannerPage {
-  ticketData = {
-    idMobile: "hey",
-    idBillet: "ed36a534-3acd-11e9-b210-d663bd873d93"
-  };
   ticketText: string;
   options: BarcodeScannerOptions;
   sucessConnexion = true;
@@ -50,10 +46,18 @@ export class ScannerPage {
     });
   }
 
-  goToInValidTicket(barcodeData) {
+  goToInValidTicket(barcodeData, code) {
+    let txt:string;
+    if(code == 400){
+      txt = "Ce billet a déjà été scanné.";
+    }
+    if(code == 409){
+      txt = "Billet Invalide";
+    }
     this.playNegative();
     this.navCtrl.push(nonValidePage, {
-      ticketText: barcodeData.text
+      ticketText: barcodeData.text,
+      text: barcodeData.text
     });
   }
 
@@ -84,15 +88,12 @@ export class ScannerPage {
       .scan(this.options)
       .then(barcodeData => {
         if (!barcodeData.cancelled) {
-          // TODO: Call addTicket API
-          // TODO: Pass code of QR and the device ID
-          // TODO: Important! C07 has ticket been already scan?
-          let code = "ed36a534-3acd-11e9-b210-d663bd873d93";
-          if (barcodeData.text == code) {
-            this.goToValidTicket(barcodeData);
-          } else {
-            this.goToInValidTicket(barcodeData);
-          }
+          let ticketData = {
+            idMobile: "",
+            idBillet: barcodeData.text
+          };
+          //Requete API
+          this.addTicket(ticketData);
         }
       })
       .catch(err => {
@@ -101,14 +102,23 @@ export class ScannerPage {
   }
 
   // Use the post from the raspi API
-  addTicket() {
-    this.serviceApi.addTicket(this.ticketData).then(
+  addTicket(ticket) {
+    this.serviceApi.addTicket(ticket).then(
       result => {
-        console.log(result);
+        if (result == 200) {
+          this.goToValidTicket(ticket.idBillet);
+        }
+        if( result == 400) {
+          this.goToInValidTicket(ticket.idBillet, 400);
+        }
+        if( result == 409) {
+          this.goToInValidTicket(ticket.idBillet, 409);
+        }
       },
       err => {
         console.log(err.status);
       }
     );
   }
+
 }

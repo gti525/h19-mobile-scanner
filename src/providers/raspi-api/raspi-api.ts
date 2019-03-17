@@ -11,13 +11,21 @@ export class RaspiApiProvider {
   addTicket(data) {
     return new Promise((resolve, reject) => {
       this.http
-        .post(this.apiUrl + "/billetScan", JSON.stringify(data))
+        .post(this.apiUrl + "/billetScan", JSON.stringify(data), {
+          headers: {},
+          observe: "response"
+        })
         .subscribe(
           res => {
-            resolve(res);
+            if (res.status == 200 || res.status == 400 || res.status == 409) {
+              resolve(res.status);
+            }
+            if (res.status == 500) {
+              reject(res.status);
+            }
           },
           err => {
-            reject(err);
+            reject(err.status);
           }
         );
     });
