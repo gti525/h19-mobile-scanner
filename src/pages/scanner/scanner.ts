@@ -23,7 +23,7 @@ import { EtatConnexionPage } from "./../etat-connexion/etat-connexion";
 export class ScannerPage {
   ticketText: string;
   options: BarcodeScannerOptions;
-  sucessConnexion = true;
+  sucessConnexion : boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -32,11 +32,11 @@ export class ScannerPage {
     private serviceApi: RaspiApiProvider
   ) {
     this.sucessConnexion = navParams.get("sucessConnexion");
+    // TODO: remove alert
     alert(this.sucessConnexion)
   }
 
   ionViewDidLoad() {
-    // TODO: get value of sucess connexion from etat-connexion
     if (this.sucessConnexion) {
       this.scanTicket();
     }
@@ -108,6 +108,8 @@ export class ScannerPage {
   addTicket(ticket) {
     this.serviceApi.addTicket(ticket).then(
       result => {
+        // TODO: remove alert
+        alert(result);
         if (result == 200) {
           this.goToValidTicket(ticket.idBillet);
         }
