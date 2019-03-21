@@ -28,14 +28,17 @@ export class ScannerPage {
   ticketText: string;
   options: BarcodeScannerOptions;
   // TODO: get value from etat-connexion
-  sucessConnexion = true;
+  sucessConnexion: boolean;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private barcodeScanner: BarcodeScanner,
     private serviceApi: RaspiApiProvider
-  ) {}
+  ) {
+    this.sucessConnexion = navParams.get("sucessConnexion");
+    alert(this.sucessConnexion)
+  }
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad ScannerPage");
