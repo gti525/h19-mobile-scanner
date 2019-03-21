@@ -32,8 +32,6 @@ export class ScannerPage {
     private serviceApi: RaspiApiProvider
   ) {
     this.sucessConnexion = navParams.get("sucessConnexion");
-    // TODO: remove alert
-    alert(this.sucessConnexion)
   }
 
   ionViewDidLoad() {

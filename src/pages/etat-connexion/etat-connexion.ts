@@ -83,7 +83,7 @@ export class EtatConnexionPage {
 
   onGoToScanner() {
     this.navCtrl.push(ScannerPage, {
-      sucessConnexion:this});
+      sucessConnexion:this.sucessConnexion});
   }
 
   retryConnexion(){
