@@ -30,7 +30,10 @@ export class ScannerPage {
     public navParams: NavParams,
     private barcodeScanner: BarcodeScanner,
     private serviceApi: RaspiApiProvider
-  ) {}
+  ) {
+    this.sucessConnexion = navParams.get("sucessConnexion");
+    alert(this.sucessConnexion)
+  }
 
   ionViewDidLoad() {
     // TODO: get value of sucess connexion from etat-connexion
