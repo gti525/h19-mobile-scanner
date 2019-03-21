@@ -7,7 +7,7 @@ import {
   BarcodeScanner,
   BarcodeScannerOptions
 } from "@ionic-native/barcode-scanner";
-import { EtatConnexionPage } from './../etat-connexion/etat-connexion';
+import { EtatConnexionPage } from "./../etat-connexion/etat-connexion";
 /**
  * Generated class for the ScannerPage page.
  *
@@ -34,7 +34,7 @@ export class ScannerPage {
 
   ionViewDidLoad() {
     // TODO: get value of sucess connexion from etat-connexion
-    if(this.sucessConnexion){
+    if (this.sucessConnexion) {
       this.scanTicket();
     }
   }
@@ -47,11 +47,11 @@ export class ScannerPage {
   }
 
   goToInValidTicket(barcodeData, code) {
-    let txt:string;
-    if(code == 400){
+    let txt: string;
+    if (code == 400) {
       txt = "Ce billet a déjà été scanné.";
     }
-    if(code == 409){
+    if (code == 409) {
       txt = "Billet Invalide";
     }
     this.playNegative();
@@ -61,18 +61,18 @@ export class ScannerPage {
     });
   }
 
-  onGoToEtatConnexion(){
+  onGoToEtatConnexion() {
     this.navCtrl.push(EtatConnexionPage);
   }
 
-  playPositive(){
+  playPositive() {
     let audio = new Audio();
     audio.src = "/assets/sounds/positive.wav";
     audio.load();
     audio.play();
   }
 
-  playNegative(){
+  playNegative() {
     let audio = new Audio();
     audio.src = "/assets/sounds/negative.wav";
     audio.load();
@@ -108,10 +108,10 @@ export class ScannerPage {
         if (result == 200) {
           this.goToValidTicket(ticket.idBillet);
         }
-        if( result == 400) {
+        if (result == 400) {
           this.goToInValidTicket(ticket.idBillet, 400);
         }
-        if( result == 409) {
+        if (result == 409) {
           this.goToInValidTicket(ticket.idBillet, 409);
         }
       },
@@ -120,5 +120,4 @@ export class ScannerPage {
       }
     );
   }
-
 }
