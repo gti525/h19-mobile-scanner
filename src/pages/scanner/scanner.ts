@@ -35,6 +35,7 @@ export class ScannerPage {
   }
 
   ionViewDidLoad() {
+    this.sucessConnexion =true;
     if (this.sucessConnexion) {
       this.scanTicket();
     }
