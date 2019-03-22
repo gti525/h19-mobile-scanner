@@ -31,14 +31,12 @@ export class ScannerPage {
     private barcodeScanner: BarcodeScanner,
     private serviceApi: RaspiApiProvider
   ) {
-    this.sucessConnexion = navParams.get("sucessConnexion");
+    // this.sucessConnexion = navParams.get("sucessConnexion");
   }
 
   ionViewDidLoad() {
-    this.sucessConnexion =true;
-    if (this.sucessConnexion) {
       this.scanTicket();
-    }
+
   }
 
   goToValidTicket(barcodeData) {

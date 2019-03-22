@@ -42,7 +42,7 @@ export class ConnexionPage{
     }
     
     login(){
-      // alert("login: "+this.user+" "+"password: "+this.password);
+      alert("login: "+this.user+" "+"password: "+this.password);
       this.serviceApi.login(this.user, this.password).then(
         result => {
           // TODO: remove alert
@@ -50,16 +50,12 @@ export class ConnexionPage{
           if (result == 200) {
             alert("Allo! Vous etes connecté");
             this.onGoToScannerPage();
-          }
-          else{
-
-            alert("Vous ne pouvez pas vous connecter");
-
-          }
-          
+          }       
           
         },
         err => {
+          //Gestion de la mauvaise connexion ici, mauvaise user/mdp
+          alert("Vous ne pouvez pas vous connecter");
           console.log(err.status);
         }
       );

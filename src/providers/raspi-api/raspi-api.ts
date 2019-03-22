@@ -39,14 +39,19 @@ export class RaspiApiProvider {
   login(user,password) {
     return new Promise((resolve, reject) => {
       this.http
-        .post(this.apiUrl + "/token-auth", {
+        .post(this.apiUrl + "/token-auth/", {
           "username": user,
           "password": password }, {
-          headers: {},
+          headers: {'Content-Type': 'application/json', 
+          'Access-Control-Allow-Origin': this.apiUrl,
+          "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers" : "Content-Type, Accept, X-Requested-With, remember-me" },
           observe: "response"
         })
         .subscribe(
           data => {
+            alert("je rentre dans subscibe");
             if (data.status == 200) {
               this.token = data['_body'];
             }
@@ -54,6 +59,7 @@ export class RaspiApiProvider {
             
            }, 
           err => {
+            alert("je rentre dans erreur "+ err.status+" "+err.response);
             reject(err.status);
           }
         );
