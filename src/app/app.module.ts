@@ -16,7 +16,7 @@ import { ConfirmationPage } from '../pages/ConfirmationPage/ConfirmationPage';
 import { nonValidePage } from '../pages/nonValidePage/nonValidePage';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { RaspiApiProvider } from '../providers/raspi-api/raspi-api';
-import { RaspiLoginApiProvider } from '../providers/raspi-login-api/raspi-login-api';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,7 @@ import { RaspiLoginApiProvider } from '../providers/raspi-login-api/raspi-login-
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -50,8 +51,7 @@ import { RaspiLoginApiProvider } from '../providers/raspi-login-api/raspi-login-
     SplashScreen,
     BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RaspiApiProvider,
-    RaspiLoginApiProvider
+    RaspiApiProvider
   ]
 })
 export class AppModule {}

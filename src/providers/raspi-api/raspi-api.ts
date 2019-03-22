@@ -51,6 +51,7 @@ export class RaspiApiProvider {
             if (data.status == 200) {
               this.token = data['_body'];
             }
+            resolve(data.status);
             
            }, 
           err => {
