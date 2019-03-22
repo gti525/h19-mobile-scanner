@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ParametresPage } from '../pages/parametres/parametres';
 import { ConnexionPage } from '../pages/ConnexionPage/connexion';
 import { ScannerPage } from './../pages/scanner/scanner';
+import { EtatConnexionPage } from '../pages/etat-connexion/etat-connexion';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +15,7 @@ import { ScannerPage } from './../pages/scanner/scanner';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ConnexionPage;
+  rootPage: any = EtatConnexionPage;
 
   pages: Array<{title: string, component: any}>;
 

@@ -1,13 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import 'rxjs/add/operator/map';
-import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class RaspiApiProvider {
   private token;
-  apiUrl = "http://virtserver.swaggerhub.com/raspi7/raspi/1.0.0";
-  constructor(public http: HttpClient, private storage: Storage) {
+  apiUrl = "http://192.168.7.1";
+  constructor(public http: HttpClient) {
     console.log("RaspiApiProvider Provider");
   }
 
@@ -40,7 +39,7 @@ export class RaspiApiProvider {
   login(user,password) {
     return new Promise((resolve, reject) => {
       this.http
-        .post(this.apiUrl + "/api-token", {
+        .post(this.apiUrl + "/token-auth", {
           "username": user,
           "password": password }, {
           headers: {},

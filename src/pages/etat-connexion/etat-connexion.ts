@@ -6,7 +6,7 @@ import { HomePage } from '../home/home';
 import { Platform } from 'ionic-angular';
 import { ScannerPage } from '../scanner/scanner';
 import { AlertController } from 'ionic-angular';
-
+import { ConnexionPage } from '../ConnexionPage/connexion';
 
 declare var WifiWizard2: any;
 /**
@@ -84,6 +84,9 @@ export class EtatConnexionPage {
   onGoToScanner() {
     this.navCtrl.push(ScannerPage, {
       sucessConnexion:this.sucessConnexion});
+  }
+  onGoToConnexion(){
+    this.navCtrl.push(ConnexionPage);
   }
 
   retryConnexion(){
