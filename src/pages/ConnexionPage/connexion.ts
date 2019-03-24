@@ -6,7 +6,6 @@ import { EtatConnexionPage } from '../etat-connexion/etat-connexion';
 import { nonValidePage } from '../nonValidePage/nonValidePage';
 import { ScannerPage } from './../scanner/scanner';
 import { RaspiApiProvider } from "./../../providers/raspi-api/raspi-api";
-import { AlertController } from 'ionic-angular';
 
 @Component({
     selector: 'page-connexion',
@@ -19,7 +18,7 @@ export class ConnexionPage{
     public user;
     public password;
 
-    constructor(public navCtrl: NavController, private serviceApi: RaspiApiProvider,  private alertController:AlertController){
+    constructor(public navCtrl: NavController, private serviceApi: RaspiApiProvider){
       
     }
    onGoToParametre(){
@@ -41,16 +40,6 @@ export class ConnexionPage{
     onGoToScannerPage(){
       this.navCtrl.push(ScannerPage);
     }
-
-    popUpNonConnexion(){
-      let alert = this.alertController.create({
-        title: 'Oups!',
-        message: "Identifiant ou mot de passe incorrect. Tapez l'ID utilisateur et le mot de passe corrects et réessayez.",
-        buttons: ['Ok'] 
-      });
-      alert.present();
-
-    }
     
     login(){
       alert("login: "+this.user+" "+"password: "+this.password);
@@ -67,7 +56,6 @@ export class ConnexionPage{
         err => {
           //Gestion de la mauvaise connexion ici, mauvaise user/mdp
           alert("Vous ne pouvez pas vous connecter");
-          this.popUpNonConnexion();
           console.log(err.status);
         }
       );
