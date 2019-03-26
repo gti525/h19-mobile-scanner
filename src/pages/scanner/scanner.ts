@@ -7,7 +7,7 @@ import {
   BarcodeScanner,
   BarcodeScannerOptions
 } from "@ionic-native/barcode-scanner";
-import { EtatConnexionPage } from './../etat-connexion/etat-connexion';
+import { EtatConnexionPage } from "./../etat-connexion/etat-connexion";
 /**
  * Generated class for the ScannerPage page.
  *
@@ -21,61 +21,60 @@ import { EtatConnexionPage } from './../etat-connexion/etat-connexion';
   templateUrl: "scanner.html"
 })
 export class ScannerPage {
-  ticketData = {
-    idMobile: "hey",
-    idBillet: "ed36a534-3acd-11e9-b210-d663bd873d93"
-  };
   ticketText: string;
   options: BarcodeScannerOptions;
-  // TODO: get value from etat-connexion
-  sucessConnexion = true;
+  sucessConnexion : boolean;
+  codescanner: string;
+  txtInvalide: string;
+
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private barcodeScanner: BarcodeScanner,
     private serviceApi: RaspiApiProvider
-  ) {}
+  ) {
+    // this.sucessConnexion = navParams.get("sucessConnexion");
+  }
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad ScannerPage");
-    if(this.sucessConnexion){
       this.scanTicket();
-    }
+
   }
 
   goToValidTicket(barcodeData) {
     this.playPositive();
     this.navCtrl.push(ConfirmationPage, {
-      ticketText: barcodeData.text
+      ticketText: this.codescanner
     });
   }
 
   goToInValidTicket(barcodeData) {
+    let txt: string;
     this.playNegative();
     this.navCtrl.push(nonValidePage, {
-      ticketText: barcodeData.text
+      ticketText: this.codescanner,
+      text: this.txtInvalide
     });
   }
 
-  onGoToEtatConnexion(){
+  onGoToEtatConnexion() {
     this.navCtrl.push(EtatConnexionPage);
   }
 
-  playPositive(){
+  playPositive() {
     let audio = new Audio();
     audio.src = "/assets/sounds/positive.wav";
     audio.load();
     audio.play();
   }
 
-  playNegative(){
+  playNegative() {
     let audio = new Audio();
     audio.src = "/assets/sounds/negative.wav";
     audio.load();
     audio.play();
   }
-
 
   scanTicket() {
     this.options = {
@@ -86,15 +85,12 @@ export class ScannerPage {
       .scan(this.options)
       .then(barcodeData => {
         if (!barcodeData.cancelled) {
-          // TODO: Call addTicket API
-          // TODO: Pass code of QR and the device ID
-          // TODO: Important! C07 has ticket been already scan?
-          let code = "ed36a534-3acd-11e9-b210-d663bd873d93";
-          if (barcodeData.text == code) {
-            this.goToValidTicket(barcodeData);
-          } else {
-            this.goToInValidTicket(barcodeData);
-          }
+          let ticketData = {
+            uuid: barcodeData.text
+          };
+          //Requete API
+          this.codescanner = barcodeData.text;
+          this.addTicket(ticketData);
         }
       })
       .catch(err => {
@@ -103,12 +99,23 @@ export class ScannerPage {
   }
 
   // Use the post from the raspi API
-  addTicket() {
-    this.serviceApi.addTicket(this.ticketData).then(
+  addTicket(ticket) {
+    this.serviceApi.addTicket(ticket).then(
       result => {
-        console.log(result);
+        if (result == 200) {
+          this.goToValidTicket(ticket.idBillet);
+        }
+
       },
       err => {
+        if (err == 500) {
+          this.txtInvalide = "Ce billet est invalide";
+          this.goToInValidTicket(ticket.idBillet);
+        }
+        if (err == 409) {
+          this.txtInvalide = "Ce billet à déja été scanné";
+          this.goToInValidTicket(ticket.idBillet);
+        }
         console.log(err.status);
       }
     );

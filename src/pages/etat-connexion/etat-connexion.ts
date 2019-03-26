@@ -6,7 +6,7 @@ import { HomePage } from '../home/home';
 import { Platform } from 'ionic-angular';
 import { ScannerPage } from '../scanner/scanner';
 import { AlertController } from 'ionic-angular';
-
+import { ConnexionPage } from '../ConnexionPage/connexion';
 
 declare var WifiWizard2: any;
 /**
@@ -23,7 +23,7 @@ declare var WifiWizard2: any;
 })
 export class EtatConnexionPage {
   @ViewChild('slides') slides: Slides;
-
+  // sucessConnexion: boolean;
   constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, private alertController:AlertController) {
   }
   
@@ -84,6 +84,9 @@ export class EtatConnexionPage {
   onGoToScanner() {
     this.navCtrl.push(ScannerPage);
   }
+  onGoToConnexion(){
+    this.navCtrl.push(ConnexionPage);
+  }
 
   retryConnexion(){
     this.slides.lockSwipes(false);
@@ -135,13 +138,14 @@ export class EtatConnexionPage {
       prom = WifiWizard2.connect("GTI525", true, wifiPassword, "WPA", false);
       // alert(`Your password input: ${wifiPassword}`)
       prom.then((result) => {
-
+        // this.sucessConnexion = true;
         this.slides.lockSwipes(false);
         this.nextTo(2, 1000);
 
       }).catch((rej) => {
         //here when you reject the promise
         //Should move to a separate page
+        // this.sucessConnexion = false;
         this.slides.lockSwipes(false);
         this.nextTo(3, 0);
       });
@@ -151,13 +155,14 @@ export class EtatConnexionPage {
       prom = WifiWizard2.iOSConnectNetwork("GTI525", wifiPassword);
 
       prom.then((result) => {
-
+        // this.sucessConnexion = true;
         this.slides.lockSwipes(false);
         this.nextTo(2, 1500);
 
       }).catch((rej) => {
         //here when you reject the promise
         //Should move to a separate page
+        // this.sucessConnexion = false;
         this.slides.lockSwipes(false);
         this.nextTo(3, 0);
       });

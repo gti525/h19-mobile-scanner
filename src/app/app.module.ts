@@ -16,6 +16,7 @@ import { ConfirmationPage } from '../pages/ConfirmationPage/ConfirmationPage';
 import { nonValidePage } from '../pages/nonValidePage/nonValidePage';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { RaspiApiProvider } from '../providers/raspi-api/raspi-api';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { RaspiApiProvider } from '../providers/raspi-api/raspi-api';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
