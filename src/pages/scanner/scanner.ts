@@ -24,6 +24,9 @@ export class ScannerPage {
   ticketText: string;
   options: BarcodeScannerOptions;
   sucessConnexion : boolean;
+  codescanner: string;
+  txtInvalide: string;
+
 
   constructor(
     public navCtrl: NavController,
@@ -42,22 +45,16 @@ export class ScannerPage {
   goToValidTicket(barcodeData) {
     this.playPositive();
     this.navCtrl.push(ConfirmationPage, {
-      ticketText: barcodeData.text
+      ticketText: this.codescanner
     });
   }
 
-  goToInValidTicket(barcodeData, code) {
+  goToInValidTicket(barcodeData) {
     let txt: string;
-    if (code == 400) {
-      txt = "Ce billet a déjà été scanné.";
-    }
-    if (code == 409) {
-      txt = "Billet Invalide";
-    }
     this.playNegative();
     this.navCtrl.push(nonValidePage, {
-      ticketText: barcodeData.text,
-      text: txt
+      ticketText: this.codescanner,
+      text: this.txtInvalide
     });
   }
 
@@ -89,10 +86,10 @@ export class ScannerPage {
       .then(barcodeData => {
         if (!barcodeData.cancelled) {
           let ticketData = {
-            idMobile: "",
-            idBillet: barcodeData.text
+            uuid: barcodeData.text
           };
           //Requete API
+          this.codescanner = barcodeData.text;
           this.addTicket(ticketData);
         }
       })
@@ -105,19 +102,20 @@ export class ScannerPage {
   addTicket(ticket) {
     this.serviceApi.addTicket(ticket).then(
       result => {
-        // TODO: remove alert
-        alert(result);
         if (result == 200) {
           this.goToValidTicket(ticket.idBillet);
         }
-        if (result == 400) {
-          this.goToInValidTicket(ticket.idBillet, 400);
-        }
-        if (result == 409) {
-          this.goToInValidTicket(ticket.idBillet, 409);
-        }
+
       },
       err => {
+        if (err == 500) {
+          this.txtInvalide = "Ce billet est invalide";
+          this.goToInValidTicket(ticket.idBillet);
+        }
+        if (err == 409) {
+          this.txtInvalide = "Ce billet à déja été scanné";
+          this.goToInValidTicket(ticket.idBillet);
+        }
         console.log(err.status);
       }
     );

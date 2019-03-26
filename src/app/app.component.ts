@@ -15,7 +15,7 @@ import { EtatConnexionPage } from '../pages/etat-connexion/etat-connexion';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ConnexionPage;
+  rootPage: any = EtatConnexionPage;
 
   pages: Array<{title: string, component: any}>;
 

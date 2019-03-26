@@ -22,12 +22,10 @@ export class RaspiApiProvider {
         })
         .subscribe(
           res => {
-            if (res.status == 200 || res.status == 400 || res.status == 409) {
+            if (res.status == 200) {
               resolve(res.status);
             }
-            if (res.status == 500) {
-              reject(res.status);
-            }
+
           },
           err => {
             reject(err.status);
@@ -42,24 +40,20 @@ export class RaspiApiProvider {
         .post(this.apiUrl + "/token-auth/", {
           "username": user,
           "password": password }, {
-          headers: {'Content-Type': 'application/json', 
-          'Access-Control-Allow-Origin': this.apiUrl,
-          "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",
-          "Access-Control-Allow-Credentials": "true",
-          "Access-Control-Allow-Headers" : "Content-Type, Accept, X-Requested-With, remember-me" },
+          headers: {'Content-Type': 'application/json' },
           observe: "response"
         })
         .subscribe(
           data => {
-            alert("je rentre dans subscibe");
+            // alert("je rentre dans subscibe");
             if (data.status == 200) {
-              this.token = data['_body'];
+              this.token = data['body']['token'];
             }
             resolve(data.status);
             
            }, 
           err => {
-            alert("je rentre dans erreur "+ err.status+" "+err.response);
+            // alert("je rentre dans erreur "+ err.status+" "+err.response);
             reject(err.status);
           }
         );

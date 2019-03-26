@@ -42,13 +42,13 @@ export class ConnexionPage{
     }
     
     login(){
-      alert("login: "+this.user+" "+"password: "+this.password);
+      // alert("login: "+this.user+" "+"password: "+this.password);
       this.serviceApi.login(this.user, this.password).then(
         result => {
           // TODO: remove alert
-          alert("result login: "+result);
+          // alert("result login: "+result);
           if (result == 200) {
-            alert("Allo! Vous etes connecté");
+            // alert("Allo! Vous etes connecté");
             this.onGoToScannerPage();
           }       
           
