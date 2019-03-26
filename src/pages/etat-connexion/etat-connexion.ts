@@ -136,16 +136,11 @@ export class EtatConnexionPage {
     this.nextTo(1, 1000);
     if (this.platform.is('android')) {
       prom = WifiWizard2.connect("GTI525", true, wifiPassword, "WPA", false);
-      // alert(`Your password input: ${wifiPassword}`)
       prom.then((result) => {
-        // this.sucessConnexion = true;
         this.slides.lockSwipes(false);
         this.nextTo(2, 1000);
 
       }).catch((rej) => {
-        //here when you reject the promise
-        //Should move to a separate page
-        // this.sucessConnexion = false;
         this.slides.lockSwipes(false);
         this.nextTo(3, 0);
       });
@@ -153,16 +148,11 @@ export class EtatConnexionPage {
     }
     if (this.platform.is('ios')) {
       prom = WifiWizard2.iOSConnectNetwork("GTI525", wifiPassword);
-
       prom.then((result) => {
-        // this.sucessConnexion = true;
         this.slides.lockSwipes(false);
         this.nextTo(2, 1500);
 
       }).catch((rej) => {
-        //here when you reject the promise
-        //Should move to a separate page
-        // this.sucessConnexion = false;
         this.slides.lockSwipes(false);
         this.nextTo(3, 0);
       });
