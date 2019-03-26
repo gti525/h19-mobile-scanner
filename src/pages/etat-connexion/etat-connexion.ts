@@ -135,7 +135,6 @@ export class EtatConnexionPage {
     this.slides.lockSwipes(false);
     this.nextTo(1, 1000);
     if (this.platform.is('android')) {
-      WifiWizard2.disconnect("GTI525");
       prom = WifiWizard2.connect("GTI525", true, wifiPassword, "WPA", false);
       // alert(`Your password input: ${wifiPassword}`)
       prom.then((result) => {
