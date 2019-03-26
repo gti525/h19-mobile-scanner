@@ -5,6 +5,7 @@ import { ConfirmationPage } from '../ConfirmationPage/ConfirmationPage';
 import { EtatConnexionPage } from '../etat-connexion/etat-connexion';
 import { nonValidePage } from '../nonValidePage/nonValidePage';
 import { ScannerPage } from './../scanner/scanner';
+import { RaspiApiProvider } from "./../../providers/raspi-api/raspi-api";
 
 @Component({
     selector: 'page-connexion',
@@ -13,8 +14,12 @@ import { ScannerPage } from './../scanner/scanner';
 
 export class ConnexionPage{
 
-    constructor(public navCtrl: NavController){
 
+    public user;
+    public password;
+
+    constructor(public navCtrl: NavController, private serviceApi: RaspiApiProvider){
+      
     }
    onGoToParametre(){
         this.navCtrl.push(ParametresPage);
@@ -34,6 +39,26 @@ export class ConnexionPage{
 
     onGoToScannerPage(){
       this.navCtrl.push(ScannerPage);
+    }
+    
+    login(){
+      // alert("login: "+this.user+" "+"password: "+this.password);
+      this.serviceApi.login(this.user, this.password).then(
+        result => {
+          // TODO: remove alert
+          // alert("result login: "+result);
+          if (result == 200) {
+            // alert("Allo! Vous etes connecté");
+            this.onGoToScannerPage();
+          }       
+          
+        },
+        err => {
+          //Gestion de la mauvaise connexion ici, mauvaise user/mdp
+          alert("Vous ne pouvez pas vous connecter");
+          console.log(err.status);
+        }
+      );
     }
 
 }
