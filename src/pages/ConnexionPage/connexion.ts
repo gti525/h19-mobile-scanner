@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Alert } from 'ionic-angular';
+import { NavController} from 'ionic-angular';
 import { ParametresPage } from '../parametres/parametres';
 import { ConfirmationPage } from '../ConfirmationPage/ConfirmationPage';
 import { EtatConnexionPage } from '../etat-connexion/etat-connexion';

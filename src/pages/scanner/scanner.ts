@@ -50,7 +50,6 @@ export class ScannerPage {
   }
 
   goToInValidTicket(barcodeData) {
-    let txt: string;
     this.playNegative();
     this.navCtrl.push(nonValidePage, {
       ticketText: this.codescanner,
