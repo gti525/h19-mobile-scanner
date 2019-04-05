@@ -108,13 +108,15 @@ export class ScannerPage {
 
       },
       err => {
-        if (err == 500) {
+        if (err == 404 || err == 400) {
           this.txtInvalide = "Ce billet est invalide";
           this.goToInValidTicket(ticket.idBillet);
+          console.log(err.status);
         }
         if (err == 409) {
           this.txtInvalide = "Ce billet à déja été scanné";
           this.goToInValidTicket(ticket.idBillet);
+          console.log(err.status);
         }
         console.log(err.status);
       }
