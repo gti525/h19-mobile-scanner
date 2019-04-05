@@ -72,7 +72,6 @@ export class ConnexionPage{
           
         },
         err => {
-          alert(err);
           //Gestion de la mauvaise connexion ici, mauvaise user/mdp
           if (err == 404 || err == 400){
             this.popUpNonConnexion();
