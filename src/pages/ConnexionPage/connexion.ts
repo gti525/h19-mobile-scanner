@@ -51,6 +51,16 @@ export class ConnexionPage{
       alert.present();
 
     }
+
+    popUpErreurAPI(){
+      let alert = this.alertController.create({
+        title: 'Oh la la!',
+        message: "Serveur indisponible.",
+        buttons: ['Ok']
+      });
+      alert.present();
+
+    }
     
     login(){
       // alert("login: "+this.user+" "+"password: "+this.password);
@@ -62,8 +72,15 @@ export class ConnexionPage{
           
         },
         err => {
+          alert(err);
           //Gestion de la mauvaise connexion ici, mauvaise user/mdp
-          this.popUpNonConnexion();
+          if (err == 404 || err == 400){
+            this.popUpNonConnexion();
+          }
+          //API retourne un 500 ou tout autre code d'erreur.
+          else{
+            this.popUpErreurAPI();
+          }
           console.log(err.status);
         }
       );
